@@ -1,0 +1,100 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Riboregulators
+  </title>
+  <link href="https://fonts.googleapis.com/css?family=Lato|Questrial" rel="stylesheet"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+  </script>
+  <link href="https://unpkg.com/tabulator-tables@4.6.3/dist/css/tabulator.min.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/tabulator-tables@4.6.3/dist/js/tabulator.min.js" type="text/javascript">
+  </script>
+  <script src="../scripts/type_riboregulators.json" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   var specific_columns = ['DR', 'High', 'Low', 'Unit', 'Device', 'Lab', 'doi', 'Reg Type']
+  </script>
+  <link href="../styles/styling.css" rel="stylesheet"/>
+ </head>
+ <nav>
+  <ul>
+   <li style="width:5%">
+    <a href="../browsing/Home.html" style="padding: 3px 0px;">
+     <img src="../images/logo.png" style="height: 75px; vertical-align: middle; margin: 0 30px;"/>
+    </a>
+   </li>
+   <li>
+    <a href="../browsing/Home.html">
+     Home
+    </a>
+   </li>
+   <li class="dropdown">
+    <a href="../browsing/Catalogue.html">
+     Browse
+    </a>
+    <div class="dropdown-content">
+     <a href="../browsing/BrowsebyType.html">
+      By Type
+     </a>
+     <a href="../browsing/BrowsebyFunction.html">
+      By Function
+     </a>
+     <a href="../browsing/BrowsebyPublication.html">
+      By Publication
+     </a>
+    </div>
+   </li>
+   <li>
+    <a href="#help">
+     Help File
+    </a>
+   </li>
+   <li style="float: right">
+    <a href="../browsing/search.html">
+     Search
+    </a>
+   </li>
+  </ul>
+ </nav>
+ <body>
+  <div class="page-content">
+   <div class="full-column">
+    <img id="icon" src="../images/Riboregulators.png" title="Riboregulators Icon"/>
+    <h2 id="name" style="margin-bottom: 0;">
+     Riboregulators
+    </h2>
+    <br/>
+    <p>
+     RNA structures designed to modulate transcription or translation based on a linear trans-RNA.
+    </p>
+    <p>
+     All riboregulators on the list use a fluorescein standard to measure activity, so dynamic ranges and relations between parts
+              on the same experiment should be fairly reliable. However, measurements taken from different experiments shouldn't be compared.
+    </p>
+    <p>
+     <strong>
+      Show quantitative parameters:
+     </strong>
+    </p>
+    <label for="dr">
+     Dynamic Range
+    </label>
+    <input checked="true" id="dr" name="dr" onclick="update_table()" type="checkbox"/>
+    <br/>
+    <input id="hill" name="hill" onclick="update_table()" style="display: none" type="checkbox"/>
+    <label for="max_min">
+     High/Low Expresion
+    </label>
+    <input id="max_min" name="max_min" onclick="update_table()" type="checkbox"/>
+    <br/>
+    <p id="warning" style="display: none;">
+    </p>
+   </div>
+  </div>
+  <div id="parts-table" style="width:1300px; margin: 20px auto; font-family: 'Questrial', sans-serif;">
+  </div>
+  <script src="../scripts/Table.js" type="text/javascript">
+  </script>
+ </body>
+</html>

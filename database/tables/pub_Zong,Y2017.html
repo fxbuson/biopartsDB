@@ -1,0 +1,74 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Publication Parts
+  </title>
+  <link href="https://fonts.googleapis.com/css?family=Lato|Questrial" rel="stylesheet"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+  </script>
+  <link href="https://unpkg.com/tabulator-tables@4.6.3/dist/css/tabulator.min.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/tabulator-tables@4.6.3/dist/js/tabulator.min.js" type="text/javascript">
+  </script>
+  <script id="table" src="../scripts/pub_Zong,Y2017.json" type="text/javascript">
+  </script>
+  <link href="../styles/styling.css" rel="stylesheet"/>
+ </head>
+ <nav>
+  <ul>
+   <li style="width:5%">
+    <a href="../browsing/Home.html" style="padding: 3px 0px;">
+     <img src="../images/logo.png" style="height: 75px; vertical-align: middle; margin: 0 30px;"/>
+    </a>
+   </li>
+   <li>
+    <a href="../browsing/Home.html">
+     Home
+    </a>
+   </li>
+   <li class="dropdown">
+    <a href="../browsing/Catalogue.html">
+     Browse
+    </a>
+    <div class="dropdown-content">
+     <a href="../browsing/BrowsebyType.html">
+      By Type
+     </a>
+     <a href="../browsing/BrowsebyFunction.html">
+      By Function
+     </a>
+     <a href="../browsing/BrowsebyPublication.html">
+      By Publication
+     </a>
+    </div>
+   </li>
+   <li>
+    <a href="#help">
+     Help File
+    </a>
+   </li>
+   <li style="float: right">
+    <a href="../browsing/search.html">
+     Search
+    </a>
+   </li>
+  </ul>
+ </nav>
+ <body>
+  <div class="page-content">
+   <h2 id="pub_title">
+    Zong, Y., Zhang, H., Lyu, C., Ji, X., Hou, J., Guo, X., Ouyang, Q. and Lou, C., 2017. Insulated transcriptional elements enable precise design of genetic circuits. Nature Communications, 8(1).
+   </h2>
+   <p>
+    In this paper, Zong and colleagues design modular promoters and models through which they can predict a promoter's activity
+    based on the sequences for the promoter core and operator. Through this method, they calculated the behaviour of over 1000
+    regulated promoters, and validated over 80 of them experimentally. For each repressor tested, we picked the promoters with the highest dynamic range.
+    There are others with higher predicted dynamic range that haven't been tested yet.
+   </p>
+  </div>
+  <div id="parts-table" style="width:1300px; margin: 20px auto; font-family: 'Questrial', sans-serif;">
+  </div>
+  <script src="../scripts/Table.js" type="text/javascript">
+  </script>
+ </body>
+</html>

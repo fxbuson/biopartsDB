@@ -1,0 +1,73 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Publication Parts
+  </title>
+  <link href="https://fonts.googleapis.com/css?family=Lato|Questrial" rel="stylesheet"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+  </script>
+  <link href="https://unpkg.com/tabulator-tables@4.6.3/dist/css/tabulator.min.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/tabulator-tables@4.6.3/dist/js/tabulator.min.js" type="text/javascript">
+  </script>
+  <script id="table" src="../scripts/pub_Davis,J2010.json" type="text/javascript">
+  </script>
+  <link href="../styles/styling.css" rel="stylesheet"/>
+ </head>
+ <nav>
+  <ul>
+   <li style="width:5%">
+    <a href="../browsing/Home.html" style="padding: 3px 0px;">
+     <img src="../images/logo.png" style="height: 75px; vertical-align: middle; margin: 0 30px;"/>
+    </a>
+   </li>
+   <li>
+    <a href="../browsing/Home.html">
+     Home
+    </a>
+   </li>
+   <li class="dropdown">
+    <a href="../browsing/Catalogue.html">
+     Browse
+    </a>
+    <div class="dropdown-content">
+     <a href="../browsing/BrowsebyType.html">
+      By Type
+     </a>
+     <a href="../browsing/BrowsebyFunction.html">
+      By Function
+     </a>
+     <a href="../browsing/BrowsebyPublication.html">
+      By Publication
+     </a>
+    </div>
+   </li>
+   <li>
+    <a href="#help">
+     Help File
+    </a>
+   </li>
+   <li style="float: right">
+    <a href="../browsing/search.html">
+     Search
+    </a>
+   </li>
+  </ul>
+ </nav>
+ <body>
+  <div class="page-content">
+   <h2 id="pub_title">
+    Davis, J., Rubin, A. and Sauer, R., 2010. Design, construction and characterization of a set of insulated bacterial promoters. Nucleic Acids Research, 39(3), pp.1131-1141.
+   </h2>
+   <p>
+    In this publication, a series of constitutive promoters are characterized, derived from the promoter pro D.
+    Although the authors normalized the data to the activity of BBa_J23101, we took the liberty to re-normalize it by BBa_J23100, also measured in the same study,
+    for these numbers to be consistent with the caracterization of other constitutive promoters in the database.
+   </p>
+  </div>
+  <div id="parts-table" style="width:1300px; margin: 20px auto; font-family: 'Questrial', sans-serif;">
+  </div>
+  <script src="../scripts/Table.js" type="text/javascript">
+  </script>
+ </body>
+</html>

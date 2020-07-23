@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Part Page
+  </title>
+  <link href="../styles/styling.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css?family=Lato|Questrial" rel="stylesheet"/>
+ </head>
+ <nav>
+  <ul>
+   <li style="width:5%">
+    <a href="../browsing/Home.html" style="padding: 3px 0px;">
+     <img src="../images/logo.png" style="height: 75px; vertical-align: middle; margin: 0 30px;"/>
+    </a>
+   </li>
+   <li>
+    <a href="../browsing/Home.html">
+     Home
+    </a>
+   </li>
+   <li class="dropdown">
+    <a href="../browsing/Catalogue.html">
+     Browse
+    </a>
+    <div class="dropdown-content">
+     <a href="../browsing/BrowsebyType.html">
+      By Type
+     </a>
+     <a href="../browsing/BrowsebyFunction.html">
+      By Function
+     </a>
+     <a href="../browsing/BrowsebyPublication.html">
+      By Publication
+     </a>
+    </div>
+   </li>
+   <li>
+    <a href="#help">
+     Help File
+    </a>
+   </li>
+   <li style="float: right">
+    <a href="../browsing/search.html">
+     Search
+    </a>
+   </li>
+  </ul>
+ </nav>
+ <body>
+  <div class="side_bar">
+   <a href="#name" style="padding-left: 10px;">
+    Part
+   </a>
+   <ul>
+    <li>
+     <a href="#data">
+      Data
+     </a>
+    </li>
+    <li>
+     <a href="#description">
+      Description
+     </a>
+    </li>
+    <li>
+     <a href="#sequence">
+      Sequences
+     </a>
+    </li>
+    <li>
+     <a href="#referencing">
+      Reference
+     </a>
+    </li>
+    <li>
+     <a href="#extra">
+      Extra References and External Links
+     </a>
+    </li>
+   </ul>
+  </div>
+  <div class="page-content">
+   <div class="full_column">
+    <img id="icon" src="../images/Regulated Promoters.png" title="ICON"/>
+    <h2 id="name" style="margin-bottom: 0;">
+     Mercury-inducible Promoter
+    </h2>
+    <h4 id="code" style="margin-top: 0;">
+     PmerT
+    </h4>
+   </div>
+   <div class="full_column" style="height: max-content;">
+    <div class="third_column_2" id="data">
+     <h3>
+      Data
+     </h3>
+     <table>
+      <tr>
+       <th>
+        Parameter
+       </th>
+       <th>
+        Value
+       </th>
+       <th>
+        Unit
+       </th>
+      </tr>
+      <tr id="dr">
+       <td>
+        DR
+       </td>
+       <td>
+        95
+       </td>
+       <td>
+        -
+       </td>
+      </tr>
+      <tr id="max">
+       <td>
+        High
+       </td>
+       <td>
+        8652.82
+       </td>
+       <td>
+        a.u.
+       </td>
+      </tr>
+      <tr id="min">
+       <td>
+        Low
+       </td>
+       <td>
+        89.82
+       </td>
+       <td>
+        a.u.
+       </td>
+      </tr>
+      <tr id="hill">
+       <td>
+        Hill
+       </td>
+       <td>
+        4.84
+       </td>
+       <td>
+        -
+       </td>
+      </tr>
+      <tr id="k">
+       <td>
+        Km
+       </td>
+       <td>
+        2.267
+       </td>
+       <td>
+        µM
+       </td>
+      </tr>
+     </table>
+     <table>
+      <tr id="strain">
+       <th>
+        Strain
+       </th>
+       <td>
+        TOP10
+       </td>
+      </tr>
+      <tr id="plasmid">
+       <th>
+        Plasmid
+       </th>
+       <td>
+        pSB3K3
+       </td>
+      </tr>
+      <tr id="origin">
+       <th>
+        ori
+       </th>
+       <td>
+        p15A
+       </td>
+      </tr>
+      <tr id="resistance">
+       <th>
+        Resistance
+       </th>
+       <td>
+        Kan
+       </td>
+      </tr>
+     </table>
+    </div>
+    <div class="third_column" id="circuit">
+     <h3>
+      Circuit Context
+     </h3>
+     <img src="../images/part_PmerT.png" style="max-width:100%"/>
+     <a href="../images/part_PmerT.png">
+      <p>
+       (better resolution)
+      </p>
+     </a>
+    </div>
+   </div>
+   <div class="full_column" id="description">
+    <h3>
+     Description
+    </h3>
+    <p> This is a promoter repressed by MerR (heterologous), a protein which stops repression in the presence of mercury, characterized by Wang and colleagues in 2013 at the Imperial College London.<br><br>
+        The part displayed here (sequences and data) is not its optimal iteration. It was chosen because of the characterization along other metal-inducible promoters, allowing comparison between them.<br><br>       
+        An improved version was achieved by Wang and colleagues in a later publication, by tuning receptor densities to modulate promoter leakiness and maximal activity<sup>1</sup>.<br><br>
+        In 2019, Wan and colleagues<sup>2</sup> developed an ultrasensitive mercury biosensor with this part, by utilizing cascaded amplifying circuits. The approach produced a higher dynamic range and 
+        sensitivity.
+    </p>
+    <h4>Orthogonality</h4>
+    <p>This part was tested for cross-reactivity with other heavy metals, and was shown to be orthogonal.</p>
+    <h4>Measurement</h4>
+    <p>
+     This data was measured by plate reader fluorescence, normalized by background and E.coli auto-fluorescence, and by OD 600.
+     Cultivated in LB medium at 37°C, the measurements were taken 6h post-induction.
+     Data represents the behaviour of the promoter in response to different concentrations of HgCl<sub>2</sub>.
+    </p>
+   </div>
+   <div class="full_column" id="sequence">
+    <h3>
+     Sequences
+    </h3>
+    <h4>
+     Promoter
+    </h4>
+    <p>
+     ttccatatcgcttgactacgtacatgagtacggaagtaaggttacgctatccaatcc
+    </p>
+    <h4>
+     MerR
+    </h4>
+    <p>
+     atggaaaataatttggaaaacctgaccattggcgtttttgccaaggcggccggggtcaacgtggagacaatccgcttctatcagcgcaagggcctgttgcgggaaccggacaagccttacggcagcatccgccgctatggggaggcggacgtggttcgggtgaaattcgtgaaatcggcacagcggctggggttcagtctggacgagattgccgagctgttgcggctcgacgatggcacccactgcgaggaggccagcagcctggccgaacacaagctcaaggacgtgcgcgagaagatggccgacttggcgcgcatggaaaccgtgctgtctgaactcgtgtgcgcctgccatgcacgaaaggggaatgtttcctgcccgttgatcgcgtcactacagggcgaagcaggcctggcaaggtcagctatgccttag
+    </p>
+   </div>
+   <div class="full_column" id="referencing">
+    <h3>
+     Reference
+    </h3>
+    <p>
+     Wang, B., Barahona, M. and Buck, M., 2013. A modular cell-based biosensor using engineered genetic logic circuits to detect and integrate multiple environmental signals. Biosensors and Bioelectronics, 40(1), pp.368-376.
+    </p>
+    <a href="http://dx.doi.org/10.1016/j.bios.2012.08.011">
+     http://dx.doi.org/10.1016/j.bios.2012.08.011
+    </a>
+   </div>
+   <div class="full_column" id="extra">
+    <h3>
+     Extra References and External Links
+    </h3>
+    <p>
+     1 - Wang, B., Barahona, M. and Buck, M., 2015. Amplification of small molecule-inducible gene expression via tuning of intracellular receptor densities. Nucleic Acids Research, 43(3), pp.1955-1964.
+    </p>
+    <a href="http://dx.doi.org/10.1093/nar/gku1388">
+     http://dx.doi.org/10.1093/nar/gku1388
+    </a>
+    <p>
+     2 - Wan, X., Volpetti, F., Petrova, E., French, C., Maerkl, S. and Wang, B., 2019. Cascaded amplifying circuits enable ultrasensitive cellular sensors for toxic metals. Nature Chemical Biology, 15(5), pp.540-548.
+    </p>
+    <a href="https://doi.org/10.1038/s41589-019-0244-3">
+     https://doi.org/10.1038/s41589-019-0244-3
+    </a>
+    <br><br>
+    <p>No Addgene plasmids for this part/publication.</p>
+    <p>No patents filed for this part/publication</p>
+   </div>
+  </div>
+ </body>
+</html>
