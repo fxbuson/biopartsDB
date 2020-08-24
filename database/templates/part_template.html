@@ -7,6 +7,12 @@
   </title>
   <link href="../styles/styling.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css?family=Lato|Questrial" rel="stylesheet"/>
+
+  <script>
+   function hideBar(){document.getElementById("sbar_shown").style.display="none";document.getElementById("sbar_hidden").style.display="block"}
+   function showBar(){document.getElementById("sbar_shown").style.display="block";document.getElementById("sbar_hidden").style.display="none"}
+  </script>
+  
  </head>
  <nav>
   <ul>
@@ -49,7 +55,11 @@
   </ul>
  </nav>
  <body>
-  <div class="side_bar">
+  <div class="side_bar" id="sbar_hidden" style="display: none;">
+   <button type="button" style="border:none; border-radius: 5px; cursor: pointer;" onclick="showBar()">+</button>
+  </div>
+  <div class="side_bar" id="sbar_shown" style="display: block;">
+   <button type="button" style="border:none; border-radius: 5px; cursor: pointer;" onclick="hideBar()">-</button>
    <a href="#name" style="padding-left: 10px;">
     Part
    </a>
@@ -83,7 +93,6 @@
   </div>
   <div class="page-content">
    <div class="full_column">
-    <!-- Header: automatically filled in page generation -->
     <img id="icon" src="../images/ICON.png" title="ICON">
      <h2 id="name" style="margin-bottom: 0;">
       PART_NAME
@@ -98,7 +107,6 @@
      <h3>
       Data
      </h3>
-     <!-- Data and metadata: automatically filled in page generation -->
      <table>
       <tr>
        <th>
@@ -206,7 +214,6 @@
      <h3>
       Circuit Context
      </h3>
-     <!-- Circuit context image: automatically filled in page generation -->
      <img src="#" style="max-width:100%"/>
      <a href="#" target="_blank">
       <p>
@@ -219,20 +226,18 @@
     <h3>
      Description
     </h3>
-    <!-- Manually written. This section will be empty after page generation. The content here should be what the part is, measurement conditions, any further characterization and additional information/discussion -->
    </div>
    <div class="full_column" id="sequence">
     <h3>
      Sequences
     </h3>
-    <!-- Sequences: automatically filled in page generation -->
    </div>
    <div class="full_column" id="referencing">
     <h3>
      Reference
     </h3>
     <p>
-     <!-- Reference publication: automatically filled in page generation -->
+     REFERENCE
     </p>
    </div>
    <div class="full_column" id="extra">
@@ -240,7 +245,7 @@
      Extra References and External Links
     </h3>
     <p>
-     <!-- This section is for description references, and relevant links (addgene, registry, patents, etc.) -->
+     EXTRA READING
     </p>
    </div>
   </div>

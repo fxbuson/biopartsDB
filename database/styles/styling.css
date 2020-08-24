@@ -4,7 +4,7 @@ body {
 }
 
 nav{
-  position: fixed;
+  position: static;
   top: 0;
   left: 0;
   width: 100%;
@@ -84,7 +84,7 @@ nav li .dropdown-content{
 
 .page-content{
   width: 1000px;
-  margin: 90px auto;
+  margin: 10px auto;
   //background-color: lightseagreen;
   padding: 0px 10px;
   border-width: 0px 3px; 

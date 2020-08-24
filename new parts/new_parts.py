@@ -254,7 +254,7 @@ for index, line in new_parts.iterrows():
         temp_template.find('div',{'id':'referencing'}).append(doi)
         
         # fill sequences (variable number)
-        for seq in line[22:]: # get all at the end of the table 
+        for seq in line[28:]: # get all at the end of the table 
             if seq == seq:
                 seq_data = seq.split(':')
                 if seq_data[0] != '':
@@ -342,9 +342,11 @@ for ref in references:
     # fill page title and link to table
     temp_template.find('h2', {'id':'pub_title'}).string = ref
     temp_template.find('script', {'id':'table'})['src']='../scripts/'+file_name+'.json'
-    new_part= open(html, 'w', encoding='utf-8')
-    new_part.write(str(temp_template))
-    new_part.close()
+    
+    if not os.path.exists(html):
+        new_part= open(html, 'w', encoding='utf-8')
+        new_part.write(str(temp_template))
+        new_part.close()
     
 # UPDATE "ALL PARTS" TABLE AND SEARCH BASE
 #%%
