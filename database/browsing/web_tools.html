@@ -6,6 +6,12 @@
   </title>
   <link href="../styles/styling.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css?family=Lato|Questrial" rel="stylesheet"/>
+
+  <script>
+   function hideBar(){document.getElementById("sbar_shown").style.display="none";document.getElementById("sbar_hidden").style.display="block"}
+   function showBar(){document.getElementById("sbar_shown").style.display="block";document.getElementById("sbar_hidden").style.display="none"}
+  </script>
+  
  </head>
  <nav>
   <ul>
@@ -48,10 +54,11 @@
   </ul>
  </nav>
  <body>
-  <div class="side_bar">
-   <a href="#name" style="padding-left: 10px;">
-    Part
-   </a>
+   <div class="side_bar" id="sbar_hidden" style="display: none;">
+    <button type="button" style="border:none; border-radius: 5px; cursor: pointer;" onclick="showBar()">+</button>
+   </div>
+   <div class="side_bar" id="sbar_shown" style="display: block;">
+    <button type="button" style="border:none; border-radius: 5px; cursor: pointer;" onclick="hideBar()">-</button>
    <ul>
     <li>
      <a href="#parts">
