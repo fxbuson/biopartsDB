@@ -21,7 +21,9 @@ Editing existing parts automatically is currently not implemented.
 
 ## Adding new parts
 
-To simulate the addition of new parts, fill the columns on "new_parts.csv" to the desired data and run the python program (made and tested with python 3.7) "new_parts.py".
+The addition of new parts is a process to be carried out by a dedicated curator. The size and scope of the database were chosen precisely for this purpose. Thus, users will not be required to know how to add parts, but this tutorial is here for suggestions to be made on the design of the project, and to make things as easy as possible for the curator.
+
+To simulate this process, fill the columns on "new_parts.csv" to the desired data according to the column legends and run the python program (made and tested with python 3.7) "new_parts.py". Alternatively look at the "all_parts.csv" file for reference of how the tables should be filled
 
 Currently you will still need to empty the "new_parts.csv" file after running the program, leaving only the column names.
 
