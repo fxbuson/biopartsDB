@@ -181,111 +181,122 @@ for index, line in new_parts.iterrows():
     
     temp_template = BeautifulSoup(template, 'html.parser') # make the soup object out of the template html
     
+    html = '../database/parts/'+line["Code"]+'.html'
+    
     # check if the part already exists to avoid duplicates (if something has a page but is not on the "all_parts" csv).
-    if os.path.exists('../database/parts/'+line["Code"]+".html"):
-        print(line["Code"]+".html", "already exists")
+    if os.path.exists(html):
+        print('Overwriting part page for:', line["Name"])
+        # Save the description if page already exists
+        previous = open(html, 'r', encoding='utf-8').read()
+        previous_soup = BeautifulSoup(previous, 'html.parser')
+        prev_description = previous_soup.find('div', {'id':'description'})
     else:
         print('Creating part page for:', line["Name"])
-        empty_data = True
         
-        # fill header elements
-        temp_template.find('h2',{'id':'name'}).string=line["Name"]
-        temp_template.find('h4',{'id':'code'}).string=line["Code"].replace('_s', '*')
-        temp_template.find('img', {'id':'icon'})['src']="../images/"+line["Set"]+".png"
+    
+    empty_data = True
+    
+    # fill header elements
+    temp_template.find('h2',{'id':'name'}).string=line["Name"]
+    temp_template.find('h4',{'id':'code'}).string=line["Code"].replace('_s', '*')
+    temp_template.find('img', {'id':'icon'})['src']="../images/"+line["Set"]+".png"
+    
+    # fill data elements. If variables are "-", their corresponding table row will be deleted
+    if line["DR"] == '-':
+        temp_template.find('tr', {'id':'dr'}).decompose()
+    else:
+        temp_template.find('tr',{'id':'dr'}).findChildren()[1].string=line["DR"]
+        empty_data = False
         
-        # fill data elements. If variables are "-", their corresponding table row will be deleted
-        if line["DR"] == '-':
-            temp_template.find('tr', {'id':'dr'}).decompose()
-        else:
-            temp_template.find('tr',{'id':'dr'}).findChildren()[1].string=line["DR"]
-            empty_data = False
-            
-        if line["n"] == '-':
-            temp_template.find('tr', {'id':'hill'}).decompose()
-        else:
-            temp_template.find('tr',{'id':'hill'}).findChildren()[1].string=line["n"]
-            
-        if (line["High"] == '-'):
-            temp_template.find('tr', {'id':'max'}).decompose()
-        else:
-            temp_template.find('tr',{'id':'max'}).findChildren()[0].string=measures[line["Set"]]
-            temp_template.find('tr',{'id':'max'}).findChildren()[1].string=line["High"]
-            temp_template.find('tr',{'id':'max'}).findChildren()[2].string=line["Unit"]
-            empty_data = False
-            
-        if (line["Low"] == '-'):
-            temp_template.find('tr', {'id':'min'}).decompose()
-        else:
-            temp_template.find('tr',{'id':'min'}).findChildren()[1].string=line["Low"]
-            temp_template.find('tr',{'id':'min'}).findChildren()[2].string=line["Unit"]
+    if line["n"] == '-':
+        temp_template.find('tr', {'id':'hill'}).decompose()
+    else:
+        temp_template.find('tr',{'id':'hill'}).findChildren()[1].string=line["n"]
         
-        if line["Km"] == '-':
-            temp_template.find('tr', {'id':'k'}).decompose()
-        else:
-            temp_template.find('tr',{'id':'k'}).findChildren()[1].string=line["Km"]
-            temp_template.find('tr',{'id':'k'}).findChildren()[2].string=line["Km Unit"]
-            empty_data = False
-            
-        if line["Strain"] == '-':
-            temp_template.find('tr', {'id':'strain'}).decompose()
-        else:
-            temp_template.find('tr',{'id':'strain'}).findChildren()[1].string=line["Strain"]
-            
-        if line["Plasmid"] == '-':
-            temp_template.find('tr', {'id':'plasmid'}).decompose()
-        else:
-            temp_template.find('tr',{'id':'plasmid'}).findChildren()[1].string=line["Plasmid"]
-            
-        if line["ori"] == '-':
-            temp_template.find('tr', {'id':'origin'}).decompose()
-        else:
-            temp_template.find('tr',{'id':'origin'}).findChildren()[1].string=line["ori"]
-            
-        if line["Resistance"] == '-':
-            temp_template.find('tr', {'id':'resistance'}).decompose()
-        else:
-            temp_template.find('tr',{'id':'resistance'}).findChildren()[1].string=line["Resistance"]
+    if (line["High"] == '-'):
+        temp_template.find('tr', {'id':'max'}).decompose()
+    else:
+        temp_template.find('tr',{'id':'max'}).findChildren()[0].string=measures[line["Set"]]
+        temp_template.find('tr',{'id':'max'}).findChildren()[1].string=line["High"]
+        temp_template.find('tr',{'id':'max'}).findChildren()[2].string=line["Unit"]
+        empty_data = False
         
-        # fill the reference section at the end of the page
-        temp_template.find('div',{'id':'referencing'}).p.string=line["Publication"]
-        doi=temp_template.new_tag('a')
-        doi.string = line["doi"]
-        doi.attrs['href']=line["doi"]
-        temp_template.find('div',{'id':'referencing'}).append(doi)
+    if (line["Low"] == '-'):
+        temp_template.find('tr', {'id':'min'}).decompose()
+    else:
+        temp_template.find('tr',{'id':'min'}).findChildren()[1].string=line["Low"]
+        temp_template.find('tr',{'id':'min'}).findChildren()[2].string=line["Unit"]
+    
+    if line["Km"] == '-':
+        temp_template.find('tr', {'id':'k'}).decompose()
+    else:
+        temp_template.find('tr',{'id':'k'}).findChildren()[1].string=line["Km"]
+        temp_template.find('tr',{'id':'k'}).findChildren()[2].string=line["Km Unit"]
+        empty_data = False
         
-        # fill sequences (variable number)
-        for seq in line[28:]: # get all at the end of the table 
-            if seq == seq:
-                seq_data = seq.split(':')
-                if seq_data[0] != '':
-                    name_tag = temp_template.new_tag('h4')
-                    name_tag.string = seq_data[0]
-                    letters_tag = temp_template.new_tag('p')
-                    letters_tag.string = seq_data[1].replace('_^', '<sup>').replace('^_', '</sup>')
-                    temp_template.find('div',{'id':'sequence'}).append(name_tag)    
-                    temp_template.find('div',{'id':'sequence'}).append(letters_tag)
+    if line["Strain"] == '-':
+        temp_template.find('tr', {'id':'strain'}).decompose()
+    else:
+        temp_template.find('tr',{'id':'strain'}).findChildren()[1].string=line["Strain"]
         
-        # drop the entire table if no data is present
-        if empty_data == True:
-            temp_template.find('div',{'id':'data'}).findChildren('table')[0].decompose()
+    if line["Plasmid"] == '-':
+        temp_template.find('tr', {'id':'plasmid'}).decompose()
+    else:
+        temp_template.find('tr',{'id':'plasmid'}).findChildren()[1].string=line["Plasmid"]
         
-        # create the circuit image
-        create_sbol(line["Construct"], line["Code"])
+    if line["ori"] == '-':
+        temp_template.find('tr', {'id':'origin'}).decompose()
+    else:
+        temp_template.find('tr',{'id':'origin'}).findChildren()[1].string=line["ori"]
         
-        # create the link for the generated image
-        temp_template.find('div',{'id':'circuit'}).findChild('img').attrs['src']='../images/part_'+line["Code"]+'.png'
-        temp_template.find('div',{'id':'circuit'}).findChild('a').attrs['href']='../images/part_'+line["Code"]+'.png'
-        
-        #save all changes to the html file
-        new_part = open('../database/parts/'+line["Code"]+'.html', 'w', encoding='utf-8')
-        new_part.write(str(temp_template))
-        
-        new_part.close()
+    if line["Resistance"] == '-':
+        temp_template.find('tr', {'id':'resistance'}).decompose()
+    else:
+        temp_template.find('tr',{'id':'resistance'}).findChildren()[1].string=line["Resistance"]
+    
+    # fill the reference section at the end of the page
+    temp_template.find('div',{'id':'referencing'}).p.string=line["Publication"]
+    doi=temp_template.new_tag('a')
+    doi.string = line["doi"]
+    doi.attrs['href']=line["doi"]
+    temp_template.find('div',{'id':'referencing'}).append(doi)
+    
+    # recover the previous description of the page if there was one
+    if prev_description:
+        temp_template.find('div', {'id':'description'}).replaceWith(prev_description)
+    
+    # fill sequences (variable number) 
+    for seq in line[22:]: # get all at the end of the table 
+        if seq == seq:
+            seq_data = seq.split(':')
+            if seq_data[0] != '':
+                name_tag = temp_template.new_tag('h4')
+                name_tag.string = seq_data[0]
+                letters_tag = temp_template.new_tag('p')
+                letters_tag.string = seq_data[1].replace('_^', '<sup>').replace('^_', '</sup>')
+                temp_template.find('div',{'id':'sequence'}).append(name_tag)    
+                temp_template.find('div',{'id':'sequence'}).append(letters_tag)
+    
+    # drop the entire table if no data is present
+    if empty_data == True:
+        temp_template.find('div',{'id':'data'}).findChildren('table')[0].decompose()
+    
+    # create the circuit image
+    create_sbol(line["Construct"], line["Code"])
+    
+    # create the link for the generated image
+    temp_template.find('div',{'id':'circuit'}).findChild('img').attrs['src']='../images/part_'+line["Code"]+'.png'
+    temp_template.find('div',{'id':'circuit'}).findChild('a').attrs['href']='../images/part_'+line["Code"]+'.png'
+    
+    #save all changes to the html file
+    new_part = open(html, 'w', encoding='utf-8')
+    new_part.write(str(temp_template))
+    
+    new_part.close()
 
 
 # UPDATE PUBLICATIONS TABLES
 #%%
-
 #get a non-redundant list of references
 references=list(set(new_parts['Publication'].to_list()))
 
@@ -322,6 +333,7 @@ for ref in references:
                 tries += 1
                 file_name = file_name[:-2]+'_'+str(tries)
                 json= '../database/scripts/'+file_name+'.json'
+            
     
     # update links to new file name
     json='../database/scripts/'+file_name+'.json'
@@ -347,7 +359,7 @@ for ref in references:
         new_part= open(html, 'w', encoding='utf-8')
         new_part.write(str(temp_template))
         new_part.close()
-    
+        
 # UPDATE "ALL PARTS" TABLE AND SEARCH BASE
 #%%
 
