@@ -111,8 +111,8 @@ new_parts = new_parts.drop(new_parts.index[redundant[redundant].index.values])
 #%%
 
 # get non-reduntant lists of types and functions
-types = list(set(new_parts['Set']))
-functions = list(set(new_parts['Device']))
+types = list(set(new_parts['Type']))
+functions = list(set(new_parts['Function']))
 
 for idx in range(len(types)):
     part_type_ori = types[idx] # keep the original name 
@@ -130,9 +130,9 @@ for idx in range(len(types)):
         table_data = pd.read_json(json_good, orient='records')
         table_data = table_data.rename(columns={measures[part_type_ori]:'High'}) # rename columns to fit the general name
         table_data = table_data[new_parts.columns] # organize the columns
-        table_data = table_data.append(new_parts.loc[new_parts['Set']==part_type_ori], sort=False) # append new data
+        table_data = table_data.append(new_parts.loc[new_parts['Type']==part_type_ori], sort=False) # append new data
     else:
-        table_data = new_parts.loc[new_parts['Set']==part_type_ori] # create new table for new types
+        table_data = new_parts.loc[new_parts['Type']==part_type_ori] # create new table for new types
         
     table_data = table_data.rename(columns={'High':measures[part_type_ori]}) # reset the "High" column name
     
@@ -158,9 +158,9 @@ for idx in range(len(functions)):
         json_good = json_literal[14:-1]
         table_data = pd.read_json(json_good, orient='records')
         table_data = table_data[new_parts.columns]
-        table_data = table_data.append(new_parts.loc[new_parts['Device']==part_func_ori], sort=False)
+        table_data = table_data.append(new_parts.loc[new_parts['Function']==part_func_ori], sort=False)
     else:
-        table_data = new_parts.loc[new_parts['Device']==part_func_ori]
+        table_data = new_parts.loc[new_parts['Function']==part_func_ori]
         
     table_data.to_json(json, orient = 'records')
     file = open(json, 'r+')
@@ -199,7 +199,31 @@ for index, line in new_parts.iterrows():
     # fill header elements
     temp_template.find('h2',{'id':'name'}).string=line["Name"]
     temp_template.find('h4',{'id':'code'}).string=line["Code"].replace('_s', '*')
-    temp_template.find('img', {'id':'icon'})['src']="../images/"+line["Set"]+".png"
+    temp_template.find('img', {'id':'icon'})['src']="../images/"+line["Type"]+".png"
+    
+    ptype = temp_template.new_tag('a')
+    ptype.string = line["Type"]
+    ptype.attrs['href'] = "../tables/type_"+line["Type"].replace(" ","_")+".html"
+    ptype.attrs['id'] = "type"
+    temp_template.find('a',{'id':'type'}).replaceWith(ptype) 
+    
+    function = temp_template.new_tag('a')
+    function.string = line["Function"]
+    function.attrs['href'] = "../tables/func_"+line["Function"]+".html"
+    function.attrs['id'] = "function"
+    temp_template.find('a',{'id':'function'}).replaceWith(function)
+    
+    ref=line["Publication"]
+    first_author=ref.split('.')[0].replace(" ", "")
+    if re.search(r'\d{4}', ref):
+        year=re.search(r'\d{4}', ref).group()
+    file_name = 'pub_'+first_author+year
+    
+    pub = temp_template.new_tag('a')
+    pub.string = file_name.replace("pub_","")
+    pub.attrs['href'] = "../tables/"+file_name+".html"
+    pub.attrs['id'] = "publication"
+    temp_template.find('a',{'id':'publication'}).replaceWith(pub)
     
     # fill data elements. If variables are "-", their corresponding table row will be deleted
     if line["DR"] == '-':
@@ -216,7 +240,7 @@ for index, line in new_parts.iterrows():
     if (line["High"] == '-'):
         temp_template.find('tr', {'id':'max'}).decompose()
     else:
-        temp_template.find('tr',{'id':'max'}).findChildren()[0].string=measures[line["Set"]]
+        temp_template.find('tr',{'id':'max'}).findChildren()[0].string=measures[line["Type"]]
         temp_template.find('tr',{'id':'max'}).findChildren()[1].string=line["High"]
         temp_template.find('tr',{'id':'max'}).findChildren()[2].string=line["Unit"]
         empty_data = False
@@ -368,7 +392,7 @@ all_parts = all_parts.append(new_parts, sort=False).reset_index(drop=True)
 all_parts.to_csv('all_parts.csv', index=False, sep=';', encoding='utf-8-sig')
 
 # set columns that go to search table
-search = all_parts[["Name", "Code", "Set", "Regulator", "Lab", "Publication", "Keywords"]]
+search = all_parts[["Name", "Code", "Type", "Regulator", "Lab", "Publication", "Keywords"]]
 
 # Mini Search needs an id column to work
 search.insert(0, column='id', value=search.index.values)
