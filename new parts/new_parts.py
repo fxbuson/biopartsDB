@@ -185,138 +185,145 @@ for index, line in new_parts.iterrows():
     
     # check if the part already exists to avoid duplicates (if something has a page but is not on the "all_parts" csv).
     if os.path.exists(html):
+        overw = input(line["Code"], 'already exists. Overwrite? [y/n]')
+        if overw in ["y", "Y"]:
+            create = True
+            # Save the description if page already exists
+            previous = open(html, 'r', encoding='utf-8').read()
+            previous_soup = BeautifulSoup(previous, 'html.parser')
+            prev_description = previous_soup.find('div', {'id':'description'})
+        elif overw in ["n", "N"]:
+            print("Not overwriting page for", line["Code"])
         print('Overwriting part page for:', line["Name"])
-        # Save the description if page already exists
-        previous = open(html, 'r', encoding='utf-8').read()
-        previous_soup = BeautifulSoup(previous, 'html.parser')
-        prev_description = previous_soup.find('div', {'id':'description'})
     else:
+        prev_description = False
         print('Creating part page for:', line["Name"])
+        create = True
         
-    
-    empty_data = True
-    
-    # fill header elements
-    temp_template.find('h2',{'id':'name'}).string=line["Name"]
-    temp_template.find('h4',{'id':'code'}).string=line["Code"].replace('_s', '*')
-    temp_template.find('img', {'id':'icon'})['src']="../images/"+line["Type"]+".png"
-    
-    ptype = temp_template.new_tag('a')
-    ptype.string = line["Type"]
-    ptype.attrs['href'] = "../tables/type_"+line["Type"].replace(" ","_")+".html"
-    ptype.attrs['id'] = "type"
-    temp_template.find('a',{'id':'type'}).replaceWith(ptype) 
-    
-    function = temp_template.new_tag('a')
-    function.string = line["Function"]
-    function.attrs['href'] = "../tables/func_"+line["Function"]+".html"
-    function.attrs['id'] = "function"
-    temp_template.find('a',{'id':'function'}).replaceWith(function)
-    
-    ref=line["Publication"]
-    first_author=ref.split('.')[0].replace(" ", "")
-    if re.search(r'\d{4}', ref):
-        year=re.search(r'\d{4}', ref).group()
-    file_name = 'pub_'+first_author+year
-    
-    pub = temp_template.new_tag('a')
-    pub.string = file_name.replace("pub_","")
-    pub.attrs['href'] = "../tables/"+file_name+".html"
-    pub.attrs['id'] = "publication"
-    temp_template.find('a',{'id':'publication'}).replaceWith(pub)
-    
-    # fill data elements. If variables are "-", their corresponding table row will be deleted
-    if line["DR"] == '-':
-        temp_template.find('tr', {'id':'dr'}).decompose()
-    else:
-        temp_template.find('tr',{'id':'dr'}).findChildren()[1].string=line["DR"]
-        empty_data = False
+    if create == True:
+        empty_data = True
         
-    if line["n"] == '-':
-        temp_template.find('tr', {'id':'hill'}).decompose()
-    else:
-        temp_template.find('tr',{'id':'hill'}).findChildren()[1].string=line["n"]
+        # fill header elements
+        temp_template.find('h2',{'id':'name'}).string=line["Name"]
+        temp_template.find('h4',{'id':'code'}).string=line["Code"].replace('_s', '*')
+        temp_template.find('img', {'id':'icon'})['src']="../images/"+line["Type"]+".png"
         
-    if (line["High"] == '-'):
-        temp_template.find('tr', {'id':'max'}).decompose()
-    else:
-        temp_template.find('tr',{'id':'max'}).findChildren()[0].string=measures[line["Type"]]
-        temp_template.find('tr',{'id':'max'}).findChildren()[1].string=line["High"]
-        temp_template.find('tr',{'id':'max'}).findChildren()[2].string=line["Unit"]
-        empty_data = False
+        ptype = temp_template.new_tag('a')
+        ptype.string = line["Type"]
+        ptype.attrs['href'] = "../tables/type_"+line["Type"].replace(" ","_")+".html"
+        ptype.attrs['id'] = "type"
+        temp_template.find('a',{'id':'type'}).replaceWith(ptype) 
         
-    if (line["Low"] == '-'):
-        temp_template.find('tr', {'id':'min'}).decompose()
-    else:
-        temp_template.find('tr',{'id':'min'}).findChildren()[1].string=line["Low"]
-        temp_template.find('tr',{'id':'min'}).findChildren()[2].string=line["Unit"]
-    
-    if line["Km"] == '-':
-        temp_template.find('tr', {'id':'k'}).decompose()
-    else:
-        temp_template.find('tr',{'id':'k'}).findChildren()[1].string=line["Km"]
-        temp_template.find('tr',{'id':'k'}).findChildren()[2].string=line["Km Unit"]
-        empty_data = False
+        function = temp_template.new_tag('a')
+        function.string = line["Function"]
+        function.attrs['href'] = "../tables/func_"+line["Function"]+".html"
+        function.attrs['id'] = "function"
+        temp_template.find('a',{'id':'function'}).replaceWith(function)
         
-    if line["Strain"] == '-':
-        temp_template.find('tr', {'id':'strain'}).decompose()
-    else:
-        temp_template.find('tr',{'id':'strain'}).findChildren()[1].string=line["Strain"]
+        ref=line["Publication"]
+        first_author=ref.split('.')[0].replace(" ", "")
+        if re.search(r'\d{4}', ref):
+            year=re.search(r'\d{4}', ref).group()
+        file_name = 'pub_'+first_author+year
         
-    if line["Plasmid"] == '-':
-        temp_template.find('tr', {'id':'plasmid'}).decompose()
-    else:
-        temp_template.find('tr',{'id':'plasmid'}).findChildren()[1].string=line["Plasmid"]
+        pub = temp_template.new_tag('a')
+        pub.string = file_name.replace("pub_","")
+        pub.attrs['href'] = "../tables/"+file_name+".html"
+        pub.attrs['id'] = "publication"
+        temp_template.find('a',{'id':'publication'}).replaceWith(pub)
         
-    if line["ori"] == '-':
-        temp_template.find('tr', {'id':'origin'}).decompose()
-    else:
-        temp_template.find('tr',{'id':'origin'}).findChildren()[1].string=line["ori"]
+        # fill data elements. If variables are "-", their corresponding table row will be deleted
+        if line["DR"] == '-':
+            temp_template.find('tr', {'id':'dr'}).decompose()
+        else:
+            temp_template.find('tr',{'id':'dr'}).findChildren()[1].string=line["DR"]
+            empty_data = False
+            
+        if line["n"] == '-':
+            temp_template.find('tr', {'id':'hill'}).decompose()
+        else:
+            temp_template.find('tr',{'id':'hill'}).findChildren()[1].string=line["n"]
+            
+        if (line["High"] == '-'):
+            temp_template.find('tr', {'id':'max'}).decompose()
+        else:
+            temp_template.find('tr',{'id':'max'}).findChildren()[0].string=measures[line["Type"]]
+            temp_template.find('tr',{'id':'max'}).findChildren()[1].string=line["High"]
+            temp_template.find('tr',{'id':'max'}).findChildren()[2].string=line["Unit"]
+            empty_data = False
+            
+        if (line["Low"] == '-'):
+            temp_template.find('tr', {'id':'min'}).decompose()
+        else:
+            temp_template.find('tr',{'id':'min'}).findChildren()[1].string=line["Low"]
+            temp_template.find('tr',{'id':'min'}).findChildren()[2].string=line["Unit"]
         
-    if line["Resistance"] == '-':
-        temp_template.find('tr', {'id':'resistance'}).decompose()
-    else:
-        temp_template.find('tr',{'id':'resistance'}).findChildren()[1].string=line["Resistance"]
-    
-    # fill the reference section at the end of the page
-    temp_template.find('div',{'id':'referencing'}).p.string=line["Publication"]
-    doi=temp_template.new_tag('a')
-    doi.string = line["doi"]
-    doi.attrs['href']=line["doi"]
-    temp_template.find('div',{'id':'referencing'}).append(doi)
-    
-    # recover the previous description of the page if there was one
-    if prev_description:
-        temp_template.find('div', {'id':'description'}).replaceWith(prev_description)
-    
-    # fill sequences (variable number) 
-    for seq in line[22:]: # get all at the end of the table 
-        if seq == seq:
-            seq_data = seq.split(':')
-            if seq_data[0] != '':
-                name_tag = temp_template.new_tag('h4')
-                name_tag.string = seq_data[0]
-                letters_tag = temp_template.new_tag('p')
-                letters_tag.string = seq_data[1].replace('_^', '<sup>').replace('^_', '</sup>')
-                temp_template.find('div',{'id':'sequence'}).append(name_tag)    
-                temp_template.find('div',{'id':'sequence'}).append(letters_tag)
-    
-    # drop the entire table if no data is present
-    if empty_data == True:
-        temp_template.find('div',{'id':'data'}).findChildren('table')[0].decompose()
-    
-    # create the circuit image
-    create_sbol(line["Construct"], line["Code"])
-    
-    # create the link for the generated image
-    temp_template.find('div',{'id':'circuit'}).findChild('img').attrs['src']='../images/part_'+line["Code"]+'.png'
-    temp_template.find('div',{'id':'circuit'}).findChild('a').attrs['href']='../images/part_'+line["Code"]+'.png'
-    
-    #save all changes to the html file
-    new_part = open(html, 'w', encoding='utf-8')
-    new_part.write(str(temp_template))
-    
-    new_part.close()
+        if line["Km"] == '-':
+            temp_template.find('tr', {'id':'k'}).decompose()
+        else:
+            temp_template.find('tr',{'id':'k'}).findChildren()[1].string=line["Km"]
+            temp_template.find('tr',{'id':'k'}).findChildren()[2].string=line["Km Unit"]
+            empty_data = False
+            
+        if line["Strain"] == '-':
+            temp_template.find('tr', {'id':'strain'}).decompose()
+        else:
+            temp_template.find('tr',{'id':'strain'}).findChildren()[1].string=line["Strain"]
+            
+        if line["Plasmid"] == '-':
+            temp_template.find('tr', {'id':'plasmid'}).decompose()
+        else:
+            temp_template.find('tr',{'id':'plasmid'}).findChildren()[1].string=line["Plasmid"]
+            
+        if line["ori"] == '-':
+            temp_template.find('tr', {'id':'origin'}).decompose()
+        else:
+            temp_template.find('tr',{'id':'origin'}).findChildren()[1].string=line["ori"]
+            
+        if line["Resistance"] == '-':
+            temp_template.find('tr', {'id':'resistance'}).decompose()
+        else:
+            temp_template.find('tr',{'id':'resistance'}).findChildren()[1].string=line["Resistance"]
+        
+        # fill the reference section at the end of the page
+        temp_template.find('div',{'id':'referencing'}).p.string=line["Publication"]
+        doi=temp_template.new_tag('a')
+        doi.string = line["doi"]
+        doi.attrs['href']=line["doi"]
+        temp_template.find('div',{'id':'referencing'}).append(doi)
+        
+        # recover the previous description of the page if there was one
+        if prev_description:
+            temp_template.find('div', {'id':'description'}).replaceWith(prev_description)
+        
+        # fill sequences (variable number) 
+        for seq in line[22:]: # get all at the end of the table 
+            if seq == seq:
+                seq_data = seq.split(':')
+                if seq_data[0] != '':
+                    name_tag = temp_template.new_tag('h4')
+                    name_tag.string = seq_data[0]
+                    letters_tag = temp_template.new_tag('p')
+                    letters_tag.string = seq_data[1].replace('_^', '<sup>').replace('^_', '</sup>')
+                    temp_template.find('div',{'id':'sequence'}).append(name_tag)    
+                    temp_template.find('div',{'id':'sequence'}).append(letters_tag)
+        
+        # drop the entire table if no data is present
+        if empty_data == True:
+            temp_template.find('div',{'id':'data'}).findChildren('table')[0].decompose()
+        
+        # create the circuit image
+        create_sbol(line["Construct"], line["Code"])
+        
+        # create the link for the generated image
+        temp_template.find('div',{'id':'circuit'}).findChild('img').attrs['src']='../images/part_'+line["Code"]+'.png'
+        temp_template.find('div',{'id':'circuit'}).findChild('a').attrs['href']='../images/part_'+line["Code"]+'.png'
+        
+        #save all changes to the html file
+        new_part = open(html, 'w', encoding='utf-8')
+        new_part.write(str(temp_template))
+        
+        new_part.close()
 
 
 # UPDATE PUBLICATIONS TABLES
