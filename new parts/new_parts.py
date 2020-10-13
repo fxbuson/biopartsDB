@@ -185,7 +185,7 @@ for index, line in new_parts.iterrows():
     
     # check if the part already exists to avoid duplicates (if something has a page but is not on the "all_parts" csv).
     if os.path.exists(html):
-        overw = input(line["Code"], 'already exists. Overwrite? [y/n]')
+        overw = input(line["Code"]+y' already exists. Overwrite? [y/n]: ')
         if overw in ["y", "Y"]:
             create = True
             # Save the description if page already exists
