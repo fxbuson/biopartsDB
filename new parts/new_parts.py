@@ -385,7 +385,7 @@ if not new_parts.empty:
     redundant_indexes = all_parts.index[redundant[redundant].index.values]
     all_parts = all_parts.drop(redundant_indexes)
 
-all_parts.sort_values('Publication')
+all_parts = all_parts.sort_values('Publication')
 
 all_parts.to_csv('all_parts.csv', index=False, sep=';', encoding='utf-8-sig')
 
