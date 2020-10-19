@@ -16,6 +16,9 @@ import regex as re #for string parsing
 import matplotlib.pyplot as plt #for dnaplotlib to function
 import dnaplotlib as dpl #to plot circuit images in part pages
 
+# DEFINE MAIN FUNCTIONS
+#%%
+
 # FUNCTION FOR PART PAGE CIRCUIT IMAGES
 def create_sbol(construct, name):
     
@@ -77,7 +80,248 @@ def create_sbol(construct, name):
     # save figure with appropriate name and close everything
     fig.savefig('../database/images/part_'+name+'.png')
     plt.close('all')
+    
+def update_tables():
+    # get non-reduntant lists of types and functions
+    types = list(set(all_parts['Type']))
+    functions = list(set(all_parts['Function']))
+    
+    for idx in range(len(types)):
+        part_type_ori = types[idx] # keep the original name 
+        print('Updating json files for:', part_type_ori)
         
+        # change the name to fit file name standards
+        types[idx] = types[idx].lower()
+        types[idx] = types[idx].replace(' ', '_')
+        
+        part_type = types[idx]
+        json = '../database/scripts/'+ 'type_' + part_type + '.json' #set file path
+        
+        table_data = all_parts.loc[all_parts['Type']==part_type_ori] # create new table for new types
+            
+        table_data = table_data.rename(columns={'High':measures[part_type_ori]}) # reset the "High" column name
+        
+        # save table to json and generate the script file 
+        table_data.to_json(json, orient = 'records')
+        file = open(json, 'r+')
+        contents=file.read()
+        file.seek(0, 0)
+        file.write('var tabledata='+contents+';')
+        file.close()
+    
+    # do the same thing as before, but for part functions
+    for idx in range(len(functions)):
+        part_func_ori = functions[idx]
+        print('Updating json files for:', part_func_ori)
+        functions[idx] = functions[idx].lower()
+        functions[idx] = functions[idx].replace(' ', '_')
+        
+        part_func = functions[idx]
+        json = '../database/scripts/'+ 'func_' + part_func + '.json'
+        
+        table_data = all_parts.loc[all_parts['Function']==part_func_ori]
+            
+        table_data.to_json(json, orient = 'records')
+        file = open(json, 'r+')
+        contents=file.read()
+        file.seek(0, 0)
+        file.write('var tabledata='+contents+';')
+        file.close()
+
+def create_part(part_info, description):
+        
+    # get template to be filled with the different data
+    template = open('../database/templates/part_template.html', 'r').read()
+    
+    empty_data = True
+    
+    temp_template = BeautifulSoup(template, 'html.parser') # make the soup object out of the template html
+    # fill header elements
+    temp_template.find('h2',{'id':'name'}).string=part_info["Name"]
+    temp_template.find('h4',{'id':'code'}).string=part_info["Code"].replace('_s', '*')
+    temp_template.find('img', {'id':'icon'})['src']="../images/"+part_info["Type"]+".png"
+    
+    ptype = temp_template.new_tag('a')
+    ptype.string = part_info["Type"]
+    ptype.attrs['href'] = "../tables/type_"+part_info["Type"].replace(" ","_")+".html"
+    ptype.attrs['id'] = "type"
+    temp_template.find('a',{'id':'type'}).replaceWith(ptype)
+    
+    
+    function = temp_template.new_tag('a')
+    function.string = part_info["Function"]
+    function.attrs['href'] = "../tables/func_"+part_info["Function"]+".html"
+    function.attrs['id'] = "function"
+    temp_template.find('a',{'id':'function'}).replaceWith(function)
+
+    
+    ref=part_info["Publication"]
+    first_author=ref.split('.')[0].replace(" ", "")
+    if re.search(r'\d{4}', ref):
+        year=re.search(r'\d{4}', ref).group()
+    else:
+        year = 2020
+    file_name = 'pub_'+first_author+str(year)
+    
+    pub = temp_template.new_tag('a')
+    pub.string = file_name.replace("pub_","")
+    pub.attrs['href'] = "../tables/"+file_name+".html"
+    pub.attrs['id'] = "publication"
+    temp_template.find('a',{'id':'publication'}).replaceWith(pub)
+    
+    
+    # fill data elements. If variables are "-", their corresponding table row will be deleted
+    if part_info["DR"] == '-':
+        temp_template.find('tr', {'id':'dr'}).decompose()
+    else:
+        temp_template.find('tr',{'id':'dr'}).findChildren()[1].string=part_info["DR"]
+        empty_data = False
+        
+    if part_info["n"] == '-':
+        temp_template.find('tr', {'id':'hill'}).decompose()
+    else:
+        temp_template.find('tr',{'id':'hill'}).findChildren()[1].string=part_info["n"]
+    
+    
+    if (part_info["High"] == '-'):
+        temp_template.find('tr', {'id':'max'}).decompose()
+    else:
+        temp_template.find('tr',{'id':'max'}).findChildren()[0].string=measures[part_info["Type"]]
+        temp_template.find('tr',{'id':'max'}).findChildren()[1].string=str(part_info["High"])
+        temp_template.find('tr',{'id':'max'}).findChildren()[2].string=part_info["Unit"]
+        empty_data = False
+        
+    if (part_info["Low"] == '-'):
+        temp_template.find('tr', {'id':'min'}).decompose()
+    else:
+        temp_template.find('tr',{'id':'min'}).findChildren()[1].string=part_info["Low"]
+        temp_template.find('tr',{'id':'min'}).findChildren()[2].string=part_info["Unit"]
+    
+    if part_info["Km"] == '-':
+        temp_template.find('tr', {'id':'k'}).decompose()
+    else:
+        temp_template.find('tr',{'id':'k'}).findChildren()[1].string=part_info["Km"]
+        temp_template.find('tr',{'id':'k'}).findChildren()[2].string=part_info["Km Unit"]
+        empty_data = False
+        
+    if part_info["Strain"] == '-':
+        temp_template.find('tr', {'id':'strain'}).decompose()
+    else:
+        temp_template.find('tr',{'id':'strain'}).findChildren()[1].string=part_info["Strain"]
+        
+    if part_info["Plasmid"] == '-':
+        temp_template.find('tr', {'id':'plasmid'}).decompose()
+    else:
+        temp_template.find('tr',{'id':'plasmid'}).findChildren()[1].string=part_info["Plasmid"]
+        
+    if part_info["ori"] == '-':
+        temp_template.find('tr', {'id':'origin'}).decompose()
+    else:
+        temp_template.find('tr',{'id':'origin'}).findChildren()[1].string=part_info["ori"]
+        
+    if part_info["Resistance"] == '-':
+        temp_template.find('tr', {'id':'resistance'}).decompose()
+    else:
+        temp_template.find('tr',{'id':'resistance'}).findChildren()[1].string=part_info["Resistance"]
+    
+    # fill the reference section at the end of the page
+    temp_template.find('div',{'id':'referencing'}).p.string=part_info["Publication"]
+    doi=temp_template.new_tag('a')
+    doi.string = part_info["doi"]
+    doi.attrs['href']=part_info["doi"]
+    temp_template.find('div',{'id':'referencing'}).append(doi)
+    
+    # recover the previous description of the page if there was one
+    temp_template.find('div', {'id':'description'}).replaceWith(description)
+    
+    # fill sequences (variable number) 
+    for seq in part_info[22:]: # get all at the end of the table 
+        if seq == seq:
+            seq_data = seq.split(':')
+            if seq_data[0] != '':
+                name_tag = temp_template.new_tag('h4')
+                name_tag.string = seq_data[0]
+                letters_tag = temp_template.new_tag('p')
+                letters_tag.string = seq_data[1].replace('_^', '<sup>').replace('^_', '</sup>')
+                temp_template.find('div',{'id':'sequence'}).append(name_tag)    
+                temp_template.find('div',{'id':'sequence'}).append(letters_tag)
+    
+    # drop the entire table if no data is present
+    if empty_data == True:
+        temp_template.find('div',{'id':'data'}).findChildren('table')[0].decompose()
+    
+    # create the circuit image
+    create_sbol(part_info["Construct"], part_info["Code"])
+    
+    # create the link for the generated image
+    temp_template.find('div',{'id':'circuit'}).findChild('img').attrs['src']='../images/part_'+part_info["Code"]+'.png'
+    temp_template.find('div',{'id':'circuit'}).findChild('a').attrs['href']='../images/part_'+part_info["Code"]+'.png'
+    
+    #save all changes to the html file
+    html = '../database/parts/'+line["Code"]+'.html'
+    new_part = open(html, 'w', encoding='utf-8')
+    new_part.write(str(temp_template))
+    
+    new_part.close()
+
+def update_publications():
+    #get a non-redundant list of references
+    references=list(set(all_parts['Publication'].to_list()))
+    file_names = []
+    
+    for ref in references:
+        
+        # get the first author name and the publication year for file naming
+        first_author=ref.split('.')[0].replace(" ", "")
+        if re.search(r'\d{4}', ref):
+            year=re.search(r'\d{4}', ref).group()
+        else:
+            year = 2020
+    
+        file_name = 'pub_'+first_author+str(year)
+        repetition_check = file_name
+        i = 1
+        while repetition_check in file_names:
+            repetition_check = file_name + "_" + str(i)
+            i += 1
+        file_name = repetition_check
+        
+        print('Creating table for:',file_name)
+        
+        
+        # set file paths for table data and table page
+        json='../database/scripts/'+file_name+'.json'
+        html='../database/tables/'+file_name+'.html'
+        
+        table_data = new_parts.loc[new_parts['Publication']==ref]               
+        
+        # update links to new file name
+        json='../database/scripts/'+file_name+'.json'
+        html='../database/tables/'+file_name+'.html'
+        
+        # create/update table data
+        table_data.to_json(json, orient = 'records')
+        file = open(json, 'r+')
+        contents=file.read()
+        file.seek(0, 0)
+        file.write('var tabledata='+contents+';')
+        file.close()
+        
+        # get the template for table page
+        template = open('../database/templates/publications_template.html', 'r').read()
+        temp_template = BeautifulSoup(template, 'html.parser')
+        
+        # fill page title and link to table
+        temp_template.find('h2', {'id':'pub_title'}).string = ref
+        temp_template.find('script', {'id':'table'})['src']='../scripts/'+file_name+'.json'
+        
+        if not os.path.exists(html):
+            new_part= open(html, 'w', encoding='utf-8')
+            new_part.write(str(temp_template))
+            new_part.close()
+    
+
+
 # INITIALIZATION VARIABLES
 #%%
 
@@ -100,302 +344,49 @@ new_parts = pd.read_csv('new_parts.csv', delimiter=';', encoding='utf-8')
 all_parts = pd.read_csv('all_parts.csv', delimiter=";", encoding='utf-8')
 
 
-#FIND TRULY NEW PARTS
-#%% 
-print()
-redundant = new_parts["Code"].isin(all_parts["Code"])
-new_parts = new_parts.drop(new_parts.index[redundant[redundant].index.values])
-
-
-# UPDATE TABLES JSON FILES
+# CREATE AND UPDATE PART PAGES
 #%%
 
-# get non-reduntant lists of types and functions
-types = list(set(new_parts['Type']))
-functions = list(set(new_parts['Function']))
-
-for idx in range(len(types)):
-    part_type_ori = types[idx] # keep the original name 
-    print('Creating json files for:', part_type_ori)
+if not new_parts.empty: #make sure that the table is not empty (if it is, just update the tables)
     
-    # change the name to fit file name standards
-    types[idx] = types[idx].lower()
-    types[idx] = types[idx].replace(' ', '_')
+    redundant = new_parts["Code"].isin(all_parts["Code"])
+    redundant_indexes = new_parts.index[redundant[redundant].index.values] #get the redundant indexes
+    redundant_parts = new_parts[redundant]
+    new_parts = new_parts.drop(redundant_indexes)
     
-    part_type = types[idx]
-    json = '../database/scripts/'+ 'type_' + part_type + '.json' #set file path
-    if os.path.exists(json):
-        json_literal = open(json, 'r').read()
-        json_good = json_literal[14:-1] # remove the "var tabledata=" part from the json files (they are not really json files)
-        table_data = pd.read_json(json_good, orient='records')
-        table_data = table_data.rename(columns={measures[part_type_ori]:'High'}) # rename columns to fit the general name
-        table_data = table_data[new_parts.columns] # organize the columns
-        table_data = table_data.append(new_parts.loc[new_parts['Type']==part_type_ori], sort=False) # append new data
-    else:
-        table_data = new_parts.loc[new_parts['Type']==part_type_ori] # create new table for new types
+    for index, line in new_parts.iterrows():
         
-    table_data = table_data.rename(columns={'High':measures[part_type_ori]}) # reset the "High" column name
-    
-    # save table to json and generate the script file 
-    table_data.to_json(json, orient = 'records')
-    file = open(json, 'r+')
-    contents=file.read()
-    file.seek(0, 0)
-    file.write('var tabledata='+contents+';')
-    file.close()
-
-# do the same thing as before, but for part functions
-for idx in range(len(functions)):
-    part_func_ori = functions[idx]
-    print('Creating json files for:', part_func_ori)
-    functions[idx] = functions[idx].lower()
-    functions[idx] = functions[idx].replace(' ', '_')
-    
-    part_func = functions[idx]
-    json = '../database/scripts/'+ 'func_' + part_func + '.json'
-    if os.path.exists(json):
-        json_literal = open(json, 'r').read()
-        json_good = json_literal[14:-1]
-        table_data = pd.read_json(json_good, orient='records')
-        table_data = table_data[new_parts.columns]
-        table_data = table_data.append(new_parts.loc[new_parts['Function']==part_func_ori], sort=False)
-    else:
-        table_data = new_parts.loc[new_parts['Function']==part_func_ori]
+        prev_description = ""
         
-    table_data.to_json(json, orient = 'records')
-    file = open(json, 'r+')
-    contents=file.read()
-    file.seek(0, 0)
-    file.write('var tabledata='+contents+';')
-    file.close()
-    
-
-
-# CREATE PART PAGES
-#%%
-
-# get template to be filled with the different data
-template = open('../database/templates/part_template.html', 'r').read()
-
-for index, line in new_parts.iterrows():
-    
-    temp_template = BeautifulSoup(template, 'html.parser') # make the soup object out of the template html
-    
-    html = '../database/parts/'+line["Code"]+'.html'
-    
-    # check if the part already exists to avoid duplicates (if something has a page but is not on the "all_parts" csv).
-    if os.path.exists(html):
-        overw = input(line["Code"]+y' already exists. Overwrite? [y/n]: ')
-        if overw in ["y", "Y"]:
-            create = True
-            # Save the description if page already exists
-            previous = open(html, 'r', encoding='utf-8').read()
-            previous_soup = BeautifulSoup(previous, 'html.parser')
-            prev_description = previous_soup.find('div', {'id':'description'})
-        elif overw in ["n", "N"]:
-            print("Not overwriting page for", line["Code"])
-        print('Overwriting part page for:', line["Name"])
-    else:
-        prev_description = False
         print('Creating part page for:', line["Name"])
-        create = True
+        create_part(line, prev_description)
+    
+    for index, line in redundant_parts.iterrows():
         
-    if create == True:
-        empty_data = True
+        html = '../database/parts/'+line["Code"]+'.html'
         
-        # fill header elements
-        temp_template.find('h2',{'id':'name'}).string=line["Name"]
-        temp_template.find('h4',{'id':'code'}).string=line["Code"].replace('_s', '*')
-        temp_template.find('img', {'id':'icon'})['src']="../images/"+line["Type"]+".png"
+        previous = open(html, 'r', encoding='utf-8').read()
+        previous_soup = BeautifulSoup(previous, 'html.parser')
+        prev_description = previous_soup.find('div', {'id':'description'})
         
-        ptype = temp_template.new_tag('a')
-        ptype.string = line["Type"]
-        ptype.attrs['href'] = "../tables/type_"+line["Type"].replace(" ","_")+".html"
-        ptype.attrs['id'] = "type"
-        temp_template.find('a',{'id':'type'}).replaceWith(ptype) 
+        print('Overwriting data on part page for:', line["Name"])
+        create_part(line, prev_description)
         
-        function = temp_template.new_tag('a')
-        function.string = line["Function"]
-        function.attrs['href'] = "../tables/func_"+line["Function"]+".html"
-        function.attrs['id'] = "function"
-        temp_template.find('a',{'id':'function'}).replaceWith(function)
-        
-        ref=line["Publication"]
-        first_author=ref.split('.')[0].replace(" ", "")
-        if re.search(r'\d{4}', ref):
-            year=re.search(r'\d{4}', ref).group()
-        file_name = 'pub_'+first_author+year
-        
-        pub = temp_template.new_tag('a')
-        pub.string = file_name.replace("pub_","")
-        pub.attrs['href'] = "../tables/"+file_name+".html"
-        pub.attrs['id'] = "publication"
-        temp_template.find('a',{'id':'publication'}).replaceWith(pub)
-        
-        # fill data elements. If variables are "-", their corresponding table row will be deleted
-        if line["DR"] == '-':
-            temp_template.find('tr', {'id':'dr'}).decompose()
-        else:
-            temp_template.find('tr',{'id':'dr'}).findChildren()[1].string=line["DR"]
-            empty_data = False
-            
-        if line["n"] == '-':
-            temp_template.find('tr', {'id':'hill'}).decompose()
-        else:
-            temp_template.find('tr',{'id':'hill'}).findChildren()[1].string=line["n"]
-            
-        if (line["High"] == '-'):
-            temp_template.find('tr', {'id':'max'}).decompose()
-        else:
-            temp_template.find('tr',{'id':'max'}).findChildren()[0].string=measures[line["Type"]]
-            temp_template.find('tr',{'id':'max'}).findChildren()[1].string=line["High"]
-            temp_template.find('tr',{'id':'max'}).findChildren()[2].string=line["Unit"]
-            empty_data = False
-            
-        if (line["Low"] == '-'):
-            temp_template.find('tr', {'id':'min'}).decompose()
-        else:
-            temp_template.find('tr',{'id':'min'}).findChildren()[1].string=line["Low"]
-            temp_template.find('tr',{'id':'min'}).findChildren()[2].string=line["Unit"]
-        
-        if line["Km"] == '-':
-            temp_template.find('tr', {'id':'k'}).decompose()
-        else:
-            temp_template.find('tr',{'id':'k'}).findChildren()[1].string=line["Km"]
-            temp_template.find('tr',{'id':'k'}).findChildren()[2].string=line["Km Unit"]
-            empty_data = False
-            
-        if line["Strain"] == '-':
-            temp_template.find('tr', {'id':'strain'}).decompose()
-        else:
-            temp_template.find('tr',{'id':'strain'}).findChildren()[1].string=line["Strain"]
-            
-        if line["Plasmid"] == '-':
-            temp_template.find('tr', {'id':'plasmid'}).decompose()
-        else:
-            temp_template.find('tr',{'id':'plasmid'}).findChildren()[1].string=line["Plasmid"]
-            
-        if line["ori"] == '-':
-            temp_template.find('tr', {'id':'origin'}).decompose()
-        else:
-            temp_template.find('tr',{'id':'origin'}).findChildren()[1].string=line["ori"]
-            
-        if line["Resistance"] == '-':
-            temp_template.find('tr', {'id':'resistance'}).decompose()
-        else:
-            temp_template.find('tr',{'id':'resistance'}).findChildren()[1].string=line["Resistance"]
-        
-        # fill the reference section at the end of the page
-        temp_template.find('div',{'id':'referencing'}).p.string=line["Publication"]
-        doi=temp_template.new_tag('a')
-        doi.string = line["doi"]
-        doi.attrs['href']=line["doi"]
-        temp_template.find('div',{'id':'referencing'}).append(doi)
-        
-        # recover the previous description of the page if there was one
-        if prev_description:
-            temp_template.find('div', {'id':'description'}).replaceWith(prev_description)
-        
-        # fill sequences (variable number) 
-        for seq in line[22:]: # get all at the end of the table 
-            if seq == seq:
-                seq_data = seq.split(':')
-                if seq_data[0] != '':
-                    name_tag = temp_template.new_tag('h4')
-                    name_tag.string = seq_data[0]
-                    letters_tag = temp_template.new_tag('p')
-                    letters_tag.string = seq_data[1].replace('_^', '<sup>').replace('^_', '</sup>')
-                    temp_template.find('div',{'id':'sequence'}).append(name_tag)    
-                    temp_template.find('div',{'id':'sequence'}).append(letters_tag)
-        
-        # drop the entire table if no data is present
-        if empty_data == True:
-            temp_template.find('div',{'id':'data'}).findChildren('table')[0].decompose()
-        
-        # create the circuit image
-        create_sbol(line["Construct"], line["Code"])
-        
-        # create the link for the generated image
-        temp_template.find('div',{'id':'circuit'}).findChild('img').attrs['src']='../images/part_'+line["Code"]+'.png'
-        temp_template.find('div',{'id':'circuit'}).findChild('a').attrs['href']='../images/part_'+line["Code"]+'.png'
-        
-        #save all changes to the html file
-        new_part = open(html, 'w', encoding='utf-8')
-        new_part.write(str(temp_template))
-        
-        new_part.close()
 
+    
 
-# UPDATE PUBLICATIONS TABLES
-#%%
-#get a non-redundant list of references
-references=list(set(new_parts['Publication'].to_list()))
-
-for ref in references:
-    
-    # get the first author name and the publication year for file naming
-    first_author=ref.split('.')[0].replace(" ", "")
-    if re.search(r'\d{4}', ref):
-        year=re.search(r'\d{4}', ref).group()
-
-    file_name = 'pub_'+first_author+year
-    print('Creating table for:',file_name)
-    
-    # set file paths for table data and table page
-    json='../database/scripts/'+file_name+'.json'
-    html='../database/tables/'+file_name+'.html'
-    
-    if ref in set(all_parts["Publication"]): # just update the table if the publication is already in the database
-        json_literal = open(json, 'r').read()
-        json_good = json_literal[14:-1] # remove "var tabledata=" 
-        table_data = pd.read_json(json_good, orient='records')
-        table_data = table_data[new_parts.columns] # organize data columns
-        table_data = table_data.append(new_parts.loc[new_parts['Publication']==ref], sort=False) # append new data
-    else:
-        table_data = new_parts.loc[new_parts['Publication']==ref]
-        tries = 0
-        if os.path.exists(json): # handle publications with the same author name and year
-            print(json, 'already exists')
-            tries += 1
-            file_name = file_name+'_'+str(tries)
-            json='../database/scripts/'+file_name+'.json'
-            while os.path.exists(json):
-                print(json, 'already exists')
-                tries += 1
-                file_name = file_name[:-2]+'_'+str(tries)
-                json= '../database/scripts/'+file_name+'.json'
-            
-    
-    # update links to new file name
-    json='../database/scripts/'+file_name+'.json'
-    html='../database/tables/'+file_name+'.html'
-    
-    # create/update table data
-    table_data.to_json(json, orient = 'records')
-    file = open(json, 'r+')
-    contents=file.read()
-    file.seek(0, 0)
-    file.write('var tabledata='+contents+';')
-    file.close()
-    
-    # get the template for table page
-    template = open('../database/templates/publications_template.html', 'r').read()
-    temp_template = BeautifulSoup(template, 'html.parser')
-    
-    # fill page title and link to table
-    temp_template.find('h2', {'id':'pub_title'}).string = ref
-    temp_template.find('script', {'id':'table'})['src']='../scripts/'+file_name+'.json'
-    
-    if not os.path.exists(html):
-        new_part= open(html, 'w', encoding='utf-8')
-        new_part.write(str(temp_template))
-        new_part.close()
-        
 # UPDATE "ALL PARTS" TABLE AND SEARCH BASE
 #%%
 
 # update and save all_parts.csv
-all_parts = all_parts.append(new_parts, sort=False).reset_index(drop=True)
+
+if not new_parts.empty:
+    all_parts = all_parts.append(new_parts, sort=False).reset_index(drop=True)
+    redundant_indexes = all_parts.index[redundant[redundant].index.values]
+    all_parts = all_parts.drop(redundant_indexes)
+
+all_parts.sort_values('Publication')
+
 all_parts.to_csv('all_parts.csv', index=False, sep=';', encoding='utf-8-sig')
 
 # set columns that go to search table
@@ -411,3 +402,13 @@ contents=file.read()
 file.seek(0, 0)
 file.write('var parts='+contents+';')
 file.close()
+
+
+# UPDATE TABLES JSON FILES
+#%%
+update_tables()
+
+# UPDATE PUBLICATIONS TABLES
+#%%
+
+update_publications()
