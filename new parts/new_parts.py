@@ -358,7 +358,7 @@ if not new_parts.empty: #make sure that the table is not empty (if it is, just u
         
         prev_description = ""
         
-        print('Creating part page for:', line["Name"])
+        print('Creating part page for:', line["Name"], " - " , line["Code"])
         create_part(line, prev_description)
     
     for index, line in redundant_parts.iterrows():
@@ -369,7 +369,7 @@ if not new_parts.empty: #make sure that the table is not empty (if it is, just u
         previous_soup = BeautifulSoup(previous, 'html.parser')
         prev_description = previous_soup.find('div', {'id':'description'})
         
-        print('Overwriting data on part page for:', line["Name"])
+        print('Overwriting data on part page for:', line["Name"], " - " , line["Code"])
         create_part(line, prev_description)
         
 
