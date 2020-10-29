@@ -29,6 +29,10 @@ Currently you will still need to empty the "new_parts.csv" file after running th
 
 *Do not add semicolons (;) in any cell of the table.*
 
+### Updating parts
+
+If the lines put into "new_parts.csv" have a code that is already used in the database, the python script will overwrite the data for that part, and keep the current part description. Everything else that is manual (extra references/links) is still reset every time a part page is updated.
+
 **Column legends**:
 
 **Name**:
@@ -173,7 +177,6 @@ Example: B0032:tcacacaggaaag
 ### Missing pages
 
 - Reporters table
-- Outputs table
 - Help File
 
 ### Missing content
