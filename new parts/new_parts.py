@@ -174,13 +174,13 @@ def create_part(part_info, description):
     if part_info["DR"] == '-':
         temp_template.find('tr', {'id':'dr'}).decompose()
     else:
-        temp_template.find('tr',{'id':'dr'}).findChildren()[1].string=part_info["DR"]
+        temp_template.find('tr',{'id':'dr'}).findChildren()[1].string=str(part_info["DR"])
         empty_data = False
         
     if part_info["n"] == '-':
         temp_template.find('tr', {'id':'hill'}).decompose()
     else:
-        temp_template.find('tr',{'id':'hill'}).findChildren()[1].string=part_info["n"]
+        temp_template.find('tr',{'id':'hill'}).findChildren()[1].string=str(part_info["n"])
     
     
     if (part_info["High"] == '-'):
@@ -194,13 +194,13 @@ def create_part(part_info, description):
     if (part_info["Low"] == '-'):
         temp_template.find('tr', {'id':'min'}).decompose()
     else:
-        temp_template.find('tr',{'id':'min'}).findChildren()[1].string=part_info["Low"]
+        temp_template.find('tr',{'id':'min'}).findChildren()[1].string=str(part_info["Low"])
         temp_template.find('tr',{'id':'min'}).findChildren()[2].string=part_info["Unit"]
     
     if part_info["Km"] == '-':
         temp_template.find('tr', {'id':'k'}).decompose()
     else:
-        temp_template.find('tr',{'id':'k'}).findChildren()[1].string=part_info["Km"]
+        temp_template.find('tr',{'id':'k'}).findChildren()[1].string=str(part_info["Km"])
         temp_template.find('tr',{'id':'k'}).findChildren()[2].string=part_info["Km Unit"]
         empty_data = False
         
@@ -293,11 +293,7 @@ def update_publications():
         json='../database/scripts/'+file_name+'.json'
         html='../database/tables/'+file_name+'.html'
         
-        table_data = new_parts.loc[new_parts['Publication']==ref]               
-        
-        # update links to new file name
-        json='../database/scripts/'+file_name+'.json'
-        html='../database/tables/'+file_name+'.html'
+        table_data = all_parts.loc[all_parts['Publication']==ref]               
         
         # create/update table data
         table_data.to_json(json, orient = 'records')
