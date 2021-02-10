@@ -29,6 +29,10 @@ Currently you will still need to empty the "new_parts.csv" file after running th
 
 *Do not add semicolons (;) in any cell of the table.*
 
+### Updating parts
+
+If the lines put into "new_parts.csv" have a code that is already used in the database, the python script will overwrite the data for that part, and keep the current part description. Everything else that is manual (extra references/links) is still reset every time a part page is updated.
+
 **Column legends**:
 
 **Name**:
@@ -47,7 +51,7 @@ Do not use characters that couldn't be in file names. (<>:"/\|?*)
 
 Example: PBAD
 
-**Set**:
+**Type**:
 
 Part type (see the "BrowsebyType.html" page) based on its molecular role in gene expression. Currently using plurals, but this may change to "Type:" in singular for consistency.
 
@@ -104,7 +108,7 @@ Example: Promoter:Plux,RBS:B0034,CDS:sfGFP,Terminator:B0015//Promoter:J23101,RBS
 
 Relevant dnaplotlib part types: Promoter, CDS, RBS, Terminator, Ribozyme, Ribonuclease, ProteinStability, Protease, Scar, Empty_Space, Spacer, Origin, Operator, Insulator
 
-**Device**:
+**Function**:
 
 Part function (see the "BrowsebyFunction.html" page) based on the role it serves in a genetic circuit. May change to "Function:" in the future.
 
@@ -128,7 +132,7 @@ Usually the name of the publication's PI.
 
 **Publication**:
 
-Reference for the publication where the part is characterized. Requires a certain structure.
+Reference for the publication where the part is characterized. Requires a certain structure with the publication year after the abbreviated author names, followed by a dot.
 
 Example: Wang, B., Barahona, M. and Buck, M., 2013. A modular cell-based biosensor using engineered genetic logic circuits to detect and integrate multiple environmental signals. Biosensors and Bioelectronics, 40(1), pp.368-376.
 
@@ -173,7 +177,6 @@ Example: B0032:tcacacaggaaag
 ### Missing pages
 
 - Reporters table
-- Outputs table
 - Help File
 
 ### Missing content
