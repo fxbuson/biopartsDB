@@ -174,12 +174,12 @@ Every column after keywords (column 23 onwards) is reserved for sequences. They 
 
 Example: B0032:tcacacaggaaag
 
-### Missing pages
+### 'To do' pages
 
 - Reporters table
 - Help File
 
-### Missing content
+### 'To do' content
 
 - Parts descriptions
 - Sequence Annotation
