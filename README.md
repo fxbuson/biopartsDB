@@ -1,6 +1,6 @@
-# Felipe Buson's Synbio Parts Database
+# biopartsDB
 
-Temporary repository for the MSc dissertation project of Felipe Xavier Buson. Will be active until this platform can be set up online.
+HTML platform with a hand-picked selection of publications on biocircuit part libraries. Created by Felipe Xavier Buson at the [Wang Lab](http://wang.bio.ed.ac.uk/) at the University of Edinburgh. Will be active until this platform can be set up online.
 
 Currently showed to work on:
 Firefox
@@ -174,12 +174,12 @@ Every column after keywords (column 23 onwards) is reserved for sequences. They 
 
 Example: B0032:tcacacaggaaag
 
-### Missing pages
+### 'To do' pages
 
 - Reporters table
 - Help File
 
-### Missing content
+### 'To do' content
 
 - Parts descriptions
 - Sequence Annotation
