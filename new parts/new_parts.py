@@ -157,10 +157,10 @@ def create_part(part_info, description):
     
     ref=part_info["Publication"]
     first_author=ref.split('.')[0].replace(" ", "")
-    if re.search(r'\d{4}', ref):
-        year=re.search(r'\d{4}', ref).group()
+    if re.search(r'\(\d{4}\)', ref):
+        year=re.search(r'\(\d{4}\)', ref).group()[1:-1]
     else:
-        year = 2020
+        year = 2021
     file_name = 'pub_'+first_author+str(year)
     
     pub = temp_template.new_tag('a')
@@ -273,10 +273,10 @@ def update_publications():
         
         # get the first author name and the publication year for file naming
         first_author=ref.split('.')[0].replace(" ", "")
-        if re.search(r'\d{4}', ref):
-            year=re.search(r'\d{4}', ref).group()
+        if re.search(r'\(\d{4}\)', ref):
+            year=re.search(r'\(\d{4}\)', ref).group()[1:-1]
         else:
-            year = 2020
+            year = 2021
     
         file_name = 'pub_'+first_author+str(year)
         repetition_check = file_name
@@ -407,4 +407,4 @@ update_tables()
 # UPDATE PUBLICATIONS TABLES
 #%%
 
-update_publications()
+#update_publications()

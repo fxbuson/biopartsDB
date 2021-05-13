@@ -10,7 +10,13 @@
 <link href="https://unpkg.com/tabulator-tables@4.6.3/dist/css/tabulator.min.css" rel="stylesheet"/>
 <script src="https://unpkg.com/tabulator-tables@4.6.3/dist/js/tabulator.min.js" type="text/javascript">
 </script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script id="table" src="../scripts/pub_Reis,A2019.json" type="text/javascript">
+</script>
+<script type="text/javascript">
+     var specific_columns = ['High', "Low", "DR"]
+     var chart_variable = "DR"
+     var y_title = "Dynamic Range (gRNA induction)"
 </script>
 <link href="../styles/styling.css" rel="stylesheet"/>
 </head>
@@ -56,13 +62,27 @@
 </nav>
 <body>
 <div class="page-content">
-<h2 id="pub_title">Reis, A., Halper, S., Vezeau, G., Cetnar, D., Hossain, A., Clauer, P. and Salis, H., 2019. Simultaneous repression of multiple bacterial genes using nonrepetitive extra-long sgRNA arrays. Nature Biotechnology, 37(11), pp.1294-1301.</h2>
+<h2 id="pub_title">Reis, A. C. et al. Simultaneous repression of multiple bacterial genes using nonrepetitive extra-long sgRNA arrays. Nat. Biotechnol. 37, 1294–1301 (2019).</h2>
 <p>
 <!-- Section for the manually written brief publication description. This should state what the characterized parts are and how to interpret the data in the table -->
+In this publication, Reis and colleagues develop non-repetitive gRNA handles for the simultaneous regulation of up to 13 targets. The sgRNA sequences are expressed together in an
+extra-long sgRNA array (ELSA).<br>
+'Low' and 'High' here represent the gene expression levels upon induction of sgRNA handles, repressing an mRFP1 gene. The values were then separated in the paper as highly-, moderately-, or non-functional.
+The latter are not displayed in this list.
 </p>
+</div>
+<div id="chart_container" style="width:50%; margin-left: auto; margin-right: auto;">
+    <canvas id="scatter_chart"></canvas>
+</div>
+<div id="chart_container" style="width:50%; margin-left: auto; margin-right: auto;">
+    <canvas id="bar_chart"></canvas>
 </div>
 <div id="parts-table" style="width:1300px; margin: 20px auto; font-family: 'Questrial', sans-serif;">
 </div>
+<script src="../scripts/scatter_chart.js" type="text/javascript">
+</script>
+<script src="../scripts/bar_chart.js" type="text/javascript">
+</script>
 <script src="../scripts/Table.js" type="text/javascript">
 </script>
 </body>

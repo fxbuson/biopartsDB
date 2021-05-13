@@ -10,7 +10,13 @@
 <link href="https://unpkg.com/tabulator-tables@4.6.3/dist/css/tabulator.min.css" rel="stylesheet"/>
 <script src="https://unpkg.com/tabulator-tables@4.6.3/dist/js/tabulator.min.js" type="text/javascript">
 </script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script id="table" src="../scripts/pub_Esvelt,K2013.json" type="text/javascript">
+</script>
+<script type="text/javascript">
+     var specific_columns = ['High', 'DR', 'Low']
+     var chart_variable = 'DR'
+     var y_title = 'Dynamic Range (matching/mismatched spacers)'
 </script>
 <link href="../styles/styling.css" rel="stylesheet"/>
 </head>
@@ -56,13 +62,26 @@
 </nav>
 <body>
 <div class="page-content">
-<h2 id="pub_title">Esvelt, K., Mali, P., Braff, J., Moosburner, M., Yaung, S. and Church, G., 2013. Orthogonal Cas9 proteins for RNA-guided gene regulation and editing. Nature Methods, 10(11), pp.1116-1121.</h2>
+<h2 id="pub_title">Esvelt, K. M. et al. Orthogonal Cas9 proteins for RNA-guided gene regulation and editing. Nat. Methods 10, 1116–1123 (2013).</h2>
 <p>
 <!-- Section for the manually written brief publication description. This should state what the characterized parts are and how to interpret the data in the table -->
+In this publication, Esvelt and colleagues described a set of Cas9 orthologs that are orthogonal to the widely used <i>Strptococcus pyrogenes</i> variant. These could be used to regulate sets of genes
+independently and simultaneously.<br>
+'Low' and 'High' here represent the gene expression levels with either mismatched or matching spacer sgRNAs being expressed.
 </p>
+</div>
+<div id="chart_container" style="width:50%; margin-left: auto; margin-right: auto;">
+    <canvas id="scatter_chart"></canvas>
+</div>
+<div id="chart_container" style="width:50%; margin-left: auto; margin-right: auto;">
+    <canvas id="bar_chart"></canvas>
 </div>
 <div id="parts-table" style="width:1300px; margin: 20px auto; font-family: 'Questrial', sans-serif;">
 </div>
+<script src="../scripts/scatter_chart.js" type="text/javascript">
+</script>
+<script src="../scripts/bar_chart.js" type="text/javascript">
+</script>
 <script src="../scripts/Table.js" type="text/javascript">
 </script>
 </body>

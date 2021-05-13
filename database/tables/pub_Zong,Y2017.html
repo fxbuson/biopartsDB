@@ -10,7 +10,13 @@
 <link href="https://unpkg.com/tabulator-tables@4.6.3/dist/css/tabulator.min.css" rel="stylesheet"/>
 <script src="https://unpkg.com/tabulator-tables@4.6.3/dist/js/tabulator.min.js" type="text/javascript">
 </script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script id="table" src="../scripts/pub_Zong,Y2017.json" type="text/javascript">
+</script>
+<script type="text/javascript">
+     var specific_columns = ['DR']
+     var chart_variable = "DR"
+     var y_title = "Dynamic Range"
 </script>
 <link href="../styles/styling.css" rel="stylesheet"/>
 </head>
@@ -56,7 +62,7 @@
 </nav>
 <body>
 <div class="page-content">
-<h2 id="pub_title">Zong, Y., Zhang, H., Lyu, C., Ji, X., Hou, J., Guo, X., Ouyang, Q. and Lou, C., 2017. Insulated transcriptional elements enable precise design of genetic circuits. Nature Communications, 8(1).</h2>
+<h2 id="pub_title">Zong, Y. et al. Insulated transcriptional elements enable precise design of genetic circuits. Nat. Commun. 8, 52 (2017).</h2>
 <p>
 <!-- Section for the manually written brief publication description. This should state what the characterized parts are and how to interpret the data in the table -->
     In this paper, Zong and colleagues design modular promoters and models through which they can predict a promoter's activity
@@ -65,8 +71,13 @@
     There are others with higher predicted dynamic range that haven't been tested yet.
 </p>
 </div>
+<div id="chart_container" style="width:50%; margin-left: auto; margin-right: auto;">
+    <canvas id="bar_chart"></canvas>
+</div>
 <div id="parts-table" style="width:1300px; margin: 20px auto; font-family: 'Questrial', sans-serif;">
 </div>
+<script src="../scripts/bar_chart.js" type="text/javascript">
+</script>
 <script src="../scripts/Table.js" type="text/javascript">
 </script>
 </body>

@@ -10,7 +10,13 @@
 <link href="https://unpkg.com/tabulator-tables@4.6.3/dist/css/tabulator.min.css" rel="stylesheet"/>
 <script src="https://unpkg.com/tabulator-tables@4.6.3/dist/js/tabulator.min.js" type="text/javascript">
 </script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script id="table" src="../scripts/pub_Du,P2020.json" type="text/javascript">
+</script>
+<script type="text/javascript">
+     var specific_columns = ['DR', 'Km']
+     var chart_variable = "DR"
+     var y_title = "Dynamic Range"
 </script>
 <link href="../styles/styling.css" rel="stylesheet"/>
 </head>
@@ -56,7 +62,7 @@
 </nav>
 <body>
 <div class="page-content">
-<h2 id="pub_title">Du, P., Zhao, H., Zhang, H., Wang, R., Huang, J., Tian, Y., Luo, X., Luo, X., Wang, M., Xiang, Y., Qian, L., Chen, Y., Tao, Y. and Lou, C., 2020. De novo design of an intercellular signaling toolbox for multi-channel cell–cell communication and biological computation. Nature Communications, 11(1).</h2>
+<h2 id="pub_title">Du, P. et al. De novo design of an intercellular signaling toolbox for multi-channel cell–cell communication and biological computation. Nat. Commun. 11, 4226 (2020).</h2>
 <p>
 <!-- Section for the manually written brief publication description. This should state what the characterized parts are and how to interpret the data in the table -->
 In this publication, Du and colleagues characterize quorum sensing systems and alternatives that can be used for inter-cell signaling. The systems are based on the synthesis and regulation by
@@ -66,8 +72,13 @@ small molecules with different chemical structures, so that the set of parts rem
 The authors optimized the synthesis rates and detection ranges of their systems so that they could be used for logic gate construction with multiple colonies sending signals at a time. 
 </p>
 </div>
+<div id="chart_container" style="width:50%; margin-left: auto; margin-right: auto;">
+    <canvas id="bar_chart"></canvas>
+</div>
 <div id="parts-table" style="width:1300px; margin: 20px auto; font-family: 'Questrial', sans-serif;">
 </div>
+<script src="../scripts/bar_chart.js" type="text/javascript">
+</script>
 <script src="../scripts/Table.js" type="text/javascript">
 </script>
 </body>

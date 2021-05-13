@@ -10,7 +10,13 @@
 <link href="https://unpkg.com/tabulator-tables@4.6.3/dist/css/tabulator.min.css" rel="stylesheet"/>
 <script src="https://unpkg.com/tabulator-tables@4.6.3/dist/js/tabulator.min.js" type="text/javascript">
 </script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script id="table" src="../scripts/pub_Mutalik,V2013.json" type="text/javascript">
+</script>
+<script type="text/javascript">
+     var specific_columns = ['High']
+     var chart_variable = "High"
+     var y_title = "insulated RBS strength (a.u.)"
 </script>
 <link href="../styles/styling.css" rel="stylesheet"/>
 </head>
@@ -56,7 +62,7 @@
 </nav>
 <body>
 <div class="page-content">
-<h2 id="pub_title">Mutalik, V., Guimaraes, J., Cambray, G., Lam, C., Christoffersen, M., Mai, Q., Tran, A., Paull, M., Keasling, J., Arkin, A. and Endy, D., 2013. Precise and reliable gene expression via standard transcription and translation initiation elements. Nature Methods, 10(4), pp.354-360.</h2>
+<h2 id="pub_title">Mutalik, V. K. et al. Precise and reliable gene expression via standard transcription and translation initiation elements. Nat. Methods 10, 354–360 (2013).</h2>
 <p>
 <!-- Section for the manually written brief publication description. This should state what the characterized parts are and how to interpret the data in the table -->
     In this publication, Mutalik and colleagues characterize the BioFab libraries of constitutive promoters and bi-cistronic designs (BCDs).
@@ -69,8 +75,13 @@
        lead to the translation of small peptides. Utilizing the same leading peptide for multiple BCDs in the same circuit is also expected to lead to evolutionary instability due to recombination.
 </p>
 </div>
+<div id="chart_container" style="width:50%; margin-left: auto; margin-right: auto;">
+    <canvas id="bar_chart"></canvas>
+</div>
 <div id="parts-table" style="width:1300px; margin: 20px auto; font-family: 'Questrial', sans-serif;">
 </div>
+<script src="../scripts/bar_chart.js" type="text/javascript">
+</script>
 <script src="../scripts/Table.js" type="text/javascript">
 </script>
 </body>

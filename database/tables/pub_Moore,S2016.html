@@ -10,7 +10,13 @@
 <link href="https://unpkg.com/tabulator-tables@4.6.3/dist/css/tabulator.min.css" rel="stylesheet"/>
 <script src="https://unpkg.com/tabulator-tables@4.6.3/dist/js/tabulator.min.js" type="text/javascript">
 </script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script id="table" src="../scripts/pub_Moore,S2016.json" type="text/javascript">
+</script>
+<script type="text/javascript">
+     var specific_columns = ['High']
+     var chart_variable = "High"
+     var y_title = 'Promoter Strength (RPU to BBa_J23100)'
 </script>
 <link href="../styles/styling.css" rel="stylesheet"/>
 </head>
@@ -56,7 +62,7 @@
 </nav>
 <body>
 <div class="page-content">
-<h2 id="pub_title">Moore, S., Lai, H., Kelwick, R., Chee, S., Bell, D., Polizzi, K. and Freemont, P., 2016. EcoFlex: A Multifunctional MoClo Kit for E. coli Synthetic Biology. ACS Synthetic Biology, 5(10), pp.1059-1069.</h2>
+<h2 id="pub_title">Moore, S. J. et al. EcoFlex: A Multifunctional MoClo Kit for E. coli Synthetic Biology. ACS Synth. Biol. 5, 1059–1069 (2016).</h2>
 <p>
 <!-- Section for the manually written brief publication description. This should state what the characterized parts are and how to interpret the data in the table -->
     In this publication, Moore and colleagues characterize sets of constitutive promoters, ribosome binding sites and terminators, and develop a
@@ -68,8 +74,13 @@
     Values were normalized by the activity of BBa_J23100, so should be comparable with other constitutive promoters in the repository.
 </p>
 </div>
+<div id="chart_container" style="width:50%; margin-left: auto; margin-right: auto;">
+    <canvas id="bar_chart"></canvas>
+</div>
 <div id="parts-table" style="width:1300px; margin: 20px auto; font-family: 'Questrial', sans-serif;">
 </div>
+<script src="../scripts/bar_chart.js" type="text/javascript">
+</script>
 <script src="../scripts/Table.js" type="text/javascript">
 </script>
 </body>
