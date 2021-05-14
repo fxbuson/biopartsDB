@@ -8,7 +8,14 @@ Google Chrome (with a few unaligned pixels)
 Microsoft Edge (with a few unaligned pixels)
 
 Only tested on Windows 10.
-
+Necessary programs/packages:
+* a web browser
+* python 3
+  * pandas
+  * matplotlib
+  * regex
+  * dnaplotlib
+  * bs4 (BeautifulSoup)
 ## Browsing
 
 To browse through the html, you need only to download the repository contents into a folder and click on the "Home.html" file in database/browsing.
@@ -176,10 +183,10 @@ Example: B0032:tcacacaggaaag
 
 ### 'To do' pages
 
-- Reporters table
 - Help File
 
 ### 'To do' content
 
 - Parts descriptions
 - Sequence Annotation
+- BLAST functionality
