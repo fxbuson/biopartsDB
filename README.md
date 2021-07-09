@@ -8,7 +8,14 @@ Google Chrome (with a few unaligned pixels)
 Microsoft Edge (with a few unaligned pixels)
 
 Only tested on Windows 10.
-
+Necessary programs/packages:
+* a web browser
+* python 3
+  * pandas
+  * matplotlib
+  * regex
+  * dnaplotlib
+  * bs4 (BeautifulSoup)
 ## Browsing
 
 To browse through the html, you need only to download the repository contents into a folder and click on the "Home.html" file in database/browsing.
@@ -35,13 +42,13 @@ If the lines put into "new_parts.csv" have a code that is already used in the da
 
 **Column legends**:
 
-**Name**:
+* **Name**:
 
 Complex Identification for the part. Does not have to be unique.
 
 Example: L-arabinose inducible promoter
 
-**Code**:
+* **Code**:
 
 Simple identification for database referencing. This is what defines file names, so codes have to be unique (redundancy is checked on part creation).
 
@@ -51,48 +58,48 @@ Do not use characters that couldn't be in file names. (<>:"/\|?*)
 
 Example: PBAD
 
-**Type**:
+* **Type**:
 
 Part type (see the "BrowsebyType.html" page) based on its molecular role in gene expression. Currently using plurals, but this may change to "Type:" in singular for consistency.
 
 Current sets: Constitutive Promoters, Regulated Promoters, RBS, Terminators, Insulators, Riboregulators, CRISPR, Origins of Replication, Degradation Tags, Post-Translational (fusion and cleavage), Recombinases.
 
-**DR**:
+* **DR**:
 
 Dynamic range achieved in part characterization. Adimensional.
 (For dynamic behaviour. Fill with - if not applicable)
 
-**n**:
+* **n**:
 
 Hill number achieved in part characterization. Adimensional.
 (For dynamic behaviour. Fill with - if not applicable)
 
-**High**:
+* **High**:
 
 Maximal expression achieved by part device. Can also represent the absolute value for parts with non-dynamic behaviour (e.g. Terminator and RBS strength, Plasmid copy number, Intein splicing efficiency)
 (Fill with - if not applicable, as is the case with insulators)
 
-**Low**:
+* **Low**:
 
 Minimal expression achieved by part device.
 (Fill with - if not applicable)
 
-**Unit**:
+* **Unit**:
 
 Unit used for measurement of High/Low values.
 (Fill with - if not applicable)
 
-**Km**:
+* **Km**:
 
 Amount of input (regulator, be it a protein, RNA or others) necessary for half-maximal expression.
 (For dynamic behaviour. Fill with - if not applicable)
 
-**Km Unit**:
+* **Km Unit**:
 
 Unit used for Km value. Will be specific for which kind of input is necessary for dynamic behaviour.
 (Fill with - if not applicable)
 
-**Construct**:
+* **Construct**:
 
 Sequence of parts that compose the circuit where the part was characterized.
 
@@ -108,67 +115,67 @@ Example: Promoter:Plux,RBS:B0034,CDS:sfGFP,Terminator:B0015//Promoter:J23101,RBS
 
 Relevant dnaplotlib part types: Promoter, CDS, RBS, Terminator, Ribozyme, Ribonuclease, ProteinStability, Protease, Scar, Empty_Space, Spacer, Origin, Operator, Insulator
 
-**Function**:
+* **Function**:
 
 Part function (see the "BrowsebyFunction.html" page) based on the role it serves in a genetic circuit. May change to "Function:" in the future.
 
 Current functions: Hardwire, Input, Buffer, NOT, AND, Insulation, Vector, QS (communication), Memory, Output.
 
-**Regulator**:
+* **Regulator**:
 
 Regulator molecule name (if applicable). This is only for added information and won't mess up code.
 
 Example: AraC
 
-**Reg Type**:
+* **Reg Type**:
 
 Which type of regulation the dynamics of a part is based on. This is only for added information and won't mess up code.
 
 Examples: Activation, Repression, Dual
 
-**Lab**:
+* **Lab**:
 
 Usually the name of the publication's PI.
 
-**Publication**:
+* **Publication**:
 
 Reference for the publication where the part is characterized. Requires a certain structure with the publication year after the abbreviated author names, followed by a dot.
 
 Example: Wang, B., Barahona, M. and Buck, M., 2013. A modular cell-based biosensor using engineered genetic logic circuits to detect and integrate multiple environmental signals. Biosensors and Bioelectronics, 40(1), pp.368-376.
 
-**doi**:
+* **doi**:
 
 Link for the publication where the part is characterized.
 
-**Strain**:
+* **Strain**:
 
 Chassis in which the part was characterized. E. coli is assumed, as all parts in the database are for E. coli.
 
 Examples: MG1655, TOP10, DH10B
 
-**Plasmid**:
+* **Plasmid**:
 
 Vector(s) on which the part was characterized.
 
 Examples: pSB1C3, pGEM, custom names
 
-**ori**:
+* **ori**:
 
 Origin(s) of replication of the characterization vector(s).
 
 Examples: pSC101, p15A, ColE1
 
-**Resistance**:
+* **Resistance**:
 
 Antibiotic(s) utilized in the characterization. Presently abbreviations are used.
 
 Examples: Kan, Spec, Amp, Clo, Tet
 
-**Keywords**:
+* **Keywords**:
 
 List of keywords to be read by the search engine. No format is enforced.
 
-**Sequences**:
+* **Sequences**:
 
 Every column after keywords (column 23 onwards) is reserved for sequences. They must follow a defined structure, with the sequence name followed by a colon and the part's seuquence.
 
@@ -176,10 +183,10 @@ Example: B0032:tcacacaggaaag
 
 ### 'To do' pages
 
-- Reporters table
 - Help File
 
 ### 'To do' content
 
 - Parts descriptions
 - Sequence Annotation
+- BLAST functionality
