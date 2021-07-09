@@ -1,0 +1,127 @@
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   biopartsDB
+  </title>
+  <link href="images/logo_square.png" rel="icon"/>
+  <link href="styles/styling.css" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Lato|Questrial" rel="stylesheet"/>
+  </link>
+  <link href="images/logo_square.png" rel="icon"/>
+ </head>
+ <nav>
+  <ul>
+   <li style="width:5%">
+    <a href="browsing/Home.html" style="padding: 3px 0px;">
+     <img src="images/logo.png" style="height: 75px; vertical-align: middle; margin: 0 30px;"/>
+    </a>
+   </li>
+   <li>
+    <a href="browsing/Home.html">
+     Home
+    </a>
+   </li>
+   <li class="dropdown">
+    <a href="browsing/Catalogue.html">
+     Browse
+    </a>
+    <div class="dropdown-content">
+     <a href="browsing/BrowsebyType.html">
+      By Type
+     </a>
+     <a href="browsing/BrowsebyFunction.html">
+      By Function
+     </a>
+     <a href="browsing/BrowsebyPublication.html">
+      By Publication
+     </a>
+    </div>
+   </li>
+   <li>
+    <a href="https://github.com/fxbuson/biopartsDB">
+     Help File
+    </a>
+   </li>
+   <li style="float: right">
+    <a href="browsing/search.html">
+     Search
+    </a>
+   </li>
+  </ul>
+ </nav>
+ <body>
+  <div class="page-content">
+   <div class="full_column">
+    <img src="images/logo.png" style="width:1000px; filter: contrast(0%) opacity(8%);; z-index: -1; position: absolute;"/>
+    <h2>
+     Welcome!
+    </h2>
+    <p>
+     This is a parts database for synthetic biology genetic circuits, created by Felipe Xavier Buson, in the
+     <a href="http://wang.bio.ed.ac.uk/">
+      Wang Lab
+     </a>
+     at the University of Edinburgh.
+    </p>
+    <p>
+     The grand majority of parts and data were not submitted by the original authors. Instead, publications were hand-picked for their relevance to genetic circuit design,
+        high quality of characterization, and large range of parts characterized.
+    </p>
+    <p>
+     The purpose of this database is to guide the search for genetic parts for new circuit designs. 
+        It does not provide evidence of the scientific validity of any component, as this is confirmed by the high quality of the referenced publications.
+    </p>
+    <p>
+     Presently the platform only highlights parts characterized in E. coli.
+    </p>
+   </div>
+   <div class="half_column">
+    <a href="browsing/Catalogue.html">
+     <img src="images/catalogue_icon.png" style="width:20px;margin-right:10px">
+      <h2 style="display:inline-block">
+       Catalogue
+      </h2>
+     </img>
+    </a>
+    <p>
+     Browse through categories of parts, sorted by type (Promoter, RBS, Terminator...), function (Input, NOT gate, Communication...) or by the original publications.
+    </p>
+   </div>
+   <div class="half_column">
+    <a href="browsing/Search.html">
+     <img src="images/search_icon.png" style="width:20px;margin-right:10px"/>
+     <h2 style="display:inline-block">
+      Search
+     </h2>
+    </a>
+    <p>
+     This is a client-based engine for search among all parts in the database, based on keywords, names, and publication titles.
+     Use this to find specific parts on the database.
+    </p>
+   </div>
+   <div class="full_column">
+    <a href="https://github.com/fxbuson/biopartsDB">
+     <img src="images/help_icon.png" style="width:20px;margin-right:10px"/>
+     <h2 style="display:inline-block">
+      Help File
+     </h2>
+    </a>
+    <p>
+     The Readme file in this project's github repository has important information on how to browse the database and instructions for adding parts and updating data.
+    </p>
+   </div>
+   <div class="full_column">
+    <a href="browsing/web_tools.html">
+     <h2>
+      Resources
+     </h2>
+    </a>
+    <p>
+     List of other web resources and platforms that might be useful for genetic circuit design. 
+     Based on an internal list at the Wang lab and another similar one at Prof. June Medford's Lab at Colorado State University.
+    </p>
+   </div>
+  </div>
+ </body>
+</html>
