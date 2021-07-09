@@ -1,199 +1,242 @@
 <!DOCTYPE html>
-
 <html>
-<head>
-<meta charset="utf-8"/>
-<title>
+ <head>
+  <meta charset="utf-8"/>
+  <title>
    Part Page
   </title>
-<link href="../styles/styling.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css?family=Lato|Questrial" rel="stylesheet"/>
-<script>
+  <link href="../styles/styling.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css?family=Lato|Questrial" rel="stylesheet"/>
+  <script>
    function hideBar(){document.getElementById("sbar_shown").style.display="none";document.getElementById("sbar_hidden").style.display="block"}
    function showBar(){document.getElementById("sbar_shown").style.display="block";document.getElementById("sbar_hidden").style.display="none"}
   </script>
-</head>
-<nav>
-<ul>
-<li style="width:5%">
-<a href="../browsing/Home.html" style="padding: 3px 0px;">
-<img src="../images/logo.png" style="height: 75px; vertical-align: middle; margin: 0 30px;"/>
-</a>
-</li>
-<li>
-<a href="../browsing/Home.html">
+  <link href="../images/logo_square.png" rel="icon"/>
+ </head>
+ <nav>
+  <ul>
+   <li style="width:5%">
+    <a href="../browsing/Home.html" style="padding: 3px 0px;">
+     <img src="../images/logo.png" style="height: 75px; vertical-align: middle; margin: 0 30px;"/>
+    </a>
+   </li>
+   <li>
+    <a href="../browsing/Home.html">
      Home
     </a>
-</li>
-<li class="dropdown">
-<a href="../browsing/Catalogue.html">
+   </li>
+   <li class="dropdown">
+    <a href="../browsing/Catalogue.html">
      Browse
     </a>
-<div class="dropdown-content">
-<a href="../browsing/BrowsebyType.html">
+    <div class="dropdown-content">
+     <a href="../browsing/BrowsebyType.html">
       By Type
      </a>
-<a href="../browsing/BrowsebyFunction.html">
+     <a href="../browsing/BrowsebyFunction.html">
       By Function
      </a>
-<a href="../browsing/BrowsebyPublication.html">
+     <a href="../browsing/BrowsebyPublication.html">
       By Publication
      </a>
-</div>
-</li>
-<li>
-<a href="#help">
+    </div>
+   </li>
+   <li>
+    <a href="#help">
      Help File
     </a>
-</li>
-<li style="float: right">
-<a href="../browsing/search.html">
+   </li>
+   <li style="float: right">
+    <a href="../browsing/search.html">
      Search
     </a>
-</li>
-</ul>
-</nav>
-<body>
-<div class="side_bar" id="sbar_hidden" style="display: none;">
-<button onclick="showBar()" style="border:none; border-radius: 5px; cursor: pointer;" type="button">+</button>
-</div>
-<div class="side_bar" id="sbar_shown" style="display: block;">
-<button onclick="hideBar()" style="border:none; border-radius: 5px; cursor: pointer;" type="button">-</button>
-<ul>
-<li>
-<a href="#data">
+   </li>
+  </ul>
+ </nav>
+ <body>
+  <div class="side_bar" id="sbar_hidden" style="display: none;">
+   <button onclick="showBar()" style="border:none; border-radius: 5px; cursor: pointer;" type="button">
+    +
+   </button>
+  </div>
+  <div class="side_bar" id="sbar_shown" style="display: block;">
+   <button onclick="hideBar()" style="border:none; border-radius: 5px; cursor: pointer;" type="button">
+    -
+   </button>
+   <ul>
+    <li>
+     <a href="#data">
       Data
      </a>
-</li>
-<li>
-<a href="#description">
+    </li>
+    <li>
+     <a href="#description">
       Description
      </a>
-</li>
-<li>
-<a href="#sequence">
+    </li>
+    <li>
+     <a href="#sequence">
       Sequences
      </a>
-</li>
-<li>
-<a href="#referencing">
+    </li>
+    <li>
+     <a href="#referencing">
       Reference
      </a>
-</li>
-<li>
-<a href="#extra">
+    </li>
+    <li>
+     <a href="#extra">
       Extra References and External Links
      </a>
-</li>
-</ul>
-</div>
-<div class="page-content">
-<div class="full_column">
-<img id="icon" src="../images/RBS.png" title="ICON"/>
-<h2 id="name" style="margin-bottom: 0;">BioFab RBS</h2>
-<h4 id="code" style="margin-top: 0;">apFAB599</h4>
-</div>
-<div class="full_column">
-<p>This part belongs to:</p>
-<p style="display:inline">Type: </p>
-<a href="../tables/type_RBS.html" id="type">RBS</a>
-<br/>
-<p style="display:inline">Function: </p>
-<a href="../tables/func_Hardwire.html" id="function">Hardwire</a>
-<br/>
-<p style="display:inline">Publication: </p>
-<a href="../tables/pub_Mutalik,V2013.html" id="publication">Mutalik,V2013</a>
-</div>
-<div class="full_column" style="height: max-content;">
-<div class="third_column_2" id="data">
-<h3>
+    </li>
+   </ul>
+  </div>
+  <div class="page-content">
+   <div class="full_column">
+    <img id="icon" src="../images/RBS.png" title="ICON"/>
+    <h2 id="name" style="margin-bottom: 0;">
+     BioFab RBS
+    </h2>
+    <h4 id="code" style="margin-top: 0;">
+     apFAB599
+    </h4>
+   </div>
+   <div class="full_column">
+    <p>
+     This part belongs to:
+    </p>
+    <p style="display:inline">
+     Type:
+    </p>
+    <a href="../tables/type_RBS.html" id="type">
+     RBS
+    </a>
+    <br/>
+    <p style="display:inline">
+     Function:
+    </p>
+    <a href="../tables/func_Hardwire.html" id="function">
+     Hardwire
+    </a>
+    <br/>
+    <p style="display:inline">
+     Publication:
+    </p>
+    <a href="../tables/pub_Mutalik,V2013.html" id="publication">
+     Mutalik,V2013
+    </a>
+   </div>
+   <div class="full_column" style="height: max-content;">
+    <div class="third_column_2" id="data">
+     <h3>
       Data
      </h3>
-<table>
-<tr>
-<th>
+     <table>
+      <tr>
+       <th>
         Parameter
        </th>
-<th>
+       <th>
         Value
        </th>
-<th>
+       <th>
         Unit
        </th>
-</tr>
-
-<tr id="max">
-<td>Strength</td>
-<td>156.58</td>
-<td>a.u.</td>
-</tr>
-
-
-
-</table>
-<table>
-<tr id="strain">
-<th>
+      </tr>
+      <tr id="max">
+       <td>
+        Strength
+       </td>
+       <td>
+        156.58
+       </td>
+       <td>
+        a.u.
+       </td>
+      </tr>
+     </table>
+     <table>
+      <tr id="strain">
+       <th>
         Strain
        </th>
-<td>BW25113</td>
-</tr>
-<tr id="plasmid">
-<th>
+       <td>
+        BW25113
+       </td>
+      </tr>
+      <tr id="plasmid">
+       <th>
         Plasmid
        </th>
-<td>pFAB1693</td>
-</tr>
-<tr id="origin">
-<th>
+       <td>
+        pFAB1693
+       </td>
+      </tr>
+      <tr id="origin">
+       <th>
         ori
        </th>
-<td>p15A</td>
-</tr>
-<tr id="resistance">
-<th>
+       <td>
+        p15A
+       </td>
+      </tr>
+      <tr id="resistance">
+       <th>
         Resistance
        </th>
-<td>Kan</td>
-</tr>
-</table>
-</div>
-<div class="third_column" id="circuit">
-<h3>
+       <td>
+        Kan
+       </td>
+      </tr>
+     </table>
+    </div>
+    <div class="third_column" id="circuit">
+     <h3>
       Circuit Context
      </h3>
-<img src="../images/part_apFAB599.png" style="max-width:100%"/>
-<a href="../images/part_apFAB599.png" target="_blank">
-<p>
+     <img src="../images/part_apFAB599.png" style="max-width:100%"/>
+     <a href="../images/part_apFAB599.png" target="_blank">
+      <p>
        (better resolution)
       </p>
-</a>
-</div>
-</div>
-<div class="full_column" id="description">
-<h3>
+     </a>
+    </div>
+   </div>
+   <div class="full_column" id="description">
+    <h3>
      Description
     </h3>
-</div>
-<div class="full_column" id="sequence">
-<h3>
+   </div>
+   <div class="full_column" id="sequence">
+    <h3>
      Sequences
     </h3>
-<h4>RBS</h4><p>GAGGGATGG</p></div>
-<div class="full_column" id="referencing">
-<h3>
+    <h4>
+     RBS
+    </h4>
+    <p>
+     GAGGGATGG
+    </p>
+   </div>
+   <div class="full_column" id="referencing">
+    <h3>
      Reference
     </h3>
-<p>Mutalik, V. K. et al. Precise and reliable gene expression via standard transcription and translation initiation elements. Nat. Methods 10, 354–360 (2013).</p>
-<a href="https://doi.org/10.1038/nmeth.2404">https://doi.org/10.1038/nmeth.2404</a></div>
-<div class="full_column" id="extra">
-<h3>
+    <p>
+     Mutalik, V. K. et al. Precise and reliable gene expression via standard transcription and translation initiation elements. Nat. Methods 10, 354–360 (2013).
+    </p>
+    <a href="https://doi.org/10.1038/nmeth.2404">
+     https://doi.org/10.1038/nmeth.2404
+    </a>
+   </div>
+   <div class="full_column" id="extra">
+    <h3>
      Extra References and External Links
     </h3>
-<p>
+    <p>
      EXTRA READING
     </p>
-</div>
-</div>
-</body>
+   </div>
+  </div>
+ </body>
 </html>

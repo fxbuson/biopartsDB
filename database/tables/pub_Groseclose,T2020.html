@@ -1,82 +1,91 @@
 <html>
-<head>
-<meta charset="utf-8"/>
-<title>
+ <head>
+  <meta charset="utf-8"/>
+  <title>
    Publication Parts Table
   </title>
-<link href="https://fonts.googleapis.com/css?family=Lato|Questrial" rel="stylesheet"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-</script>
-<link href="https://unpkg.com/tabulator-tables@4.6.3/dist/css/tabulator.min.css" rel="stylesheet"/>
-<script src="https://unpkg.com/tabulator-tables@4.6.3/dist/js/tabulator.min.js" type="text/javascript"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script id="table" src="../scripts/pub_Groseclose,T2020.json" type="text/javascript"></script>
-<script type="text/javascript">
- var specific_columns = ['DR']
+  <link href="https://fonts.googleapis.com/css?family=Lato|Questrial" rel="stylesheet"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+  </script>
+  <link href="https://unpkg.com/tabulator-tables@4.6.3/dist/css/tabulator.min.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/tabulator-tables@4.6.3/dist/js/tabulator.min.js" type="text/javascript">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js">
+  </script>
+  <script id="table" src="../scripts/pub_Groseclose,T2020.json" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   var specific_columns = ['DR']
  var chart_variable = "DR"
  var y_title = "Dynamic Range"
-</script>
-<link href="../styles/styling.css" rel="stylesheet"/>
-</head>
-<nav>
-<ul>
-<li style="width:5%">
-<a href="../browsing/Home.html" style="padding: 3px 0px;">
-<img src="../images/logo.png" style="height: 75px; vertical-align: middle; margin: 0 30px;"/>
-</a>
-</li>
-<li>
-<a href="../browsing/Home.html">
+  </script>
+  <link href="../styles/styling.css" rel="stylesheet"/>
+  <link href="../images/logo_square.png" rel="icon"/>
+ </head>
+ <nav>
+  <ul>
+   <li style="width:5%">
+    <a href="../browsing/Home.html" style="padding: 3px 0px;">
+     <img src="../images/logo.png" style="height: 75px; vertical-align: middle; margin: 0 30px;"/>
+    </a>
+   </li>
+   <li>
+    <a href="../browsing/Home.html">
      Home
     </a>
-</li>
-<li class="dropdown">
-<a href="../browsing/Catalogue.html">
+   </li>
+   <li class="dropdown">
+    <a href="../browsing/Catalogue.html">
      Browse
     </a>
-<div class="dropdown-content">
-<a href="../browsing/BrowsebyType.html">
+    <div class="dropdown-content">
+     <a href="../browsing/BrowsebyType.html">
       By Type
      </a>
-<a href="../browsing/BrowsebyFunction.html">
+     <a href="../browsing/BrowsebyFunction.html">
       By Function
      </a>
-<a href="../browsing/BrowsebyPublication.html">
+     <a href="../browsing/BrowsebyPublication.html">
       By Publication
      </a>
-</div>
-</li>
-<li>
-<a href="#help">
+    </div>
+   </li>
+   <li>
+    <a href="#help">
      Help File
     </a>
-</li>
-<li style="float: right">
-<a href="../browsing/search.html">
+   </li>
+   <li style="float: right">
+    <a href="../browsing/search.html">
      Search
     </a>
-</li>
-</ul>
-</nav>
-<body>
-<div class="page-content">
-<h2 id="pub_title">Groseclose, T. M., Rondon, R. E., Herde, Z. D., Aldrete, C. A. & Wilson, C. J. Engineered systems of inducible anti-repressors for the next generation of biological programming. Nat. Commun. 11, 4440 (2020).</h2>
-<p>
-<!-- Section for the manually written brief publication description. This should state what the characterized parts are and how to interpret the data in the table -->
-In this publication, Groseclose and colleagues create a library of anti-repressor proteins, which have altered allosteric interactions with their ligands, compared to their repressor counterparts.
+   </li>
+  </ul>
+ </nav>
+ <body>
+  <div class="page-content">
+   <h2 id="pub_title">
+    Groseclose, T. M., Rondon, R. E., Herde, Z. D., Aldrete, C. A. &amp; Wilson, C. J. Engineered systems of inducible anti-repressors for the next generation of biological programming. Nat. Commun. 11, 4440 (2020).
+   </h2>
+   <p>
+    <!-- Section for the manually written brief publication description. This should state what the characterized parts are and how to interpret the data in the table -->
+    In this publication, Groseclose and colleagues create a library of anti-repressor proteins, which have altered allosteric interactions with their ligands, compared to their repressor counterparts.
 This results in regulators which only repress a target promoter in the presence of their cognate ligand. The design of the anti-repressors is modular, meaning there are many possible combinations
-of ligand and DNA binding domains.<br> Here, the parts are separated by their operator, and the different variations sensing IPTG, fructose and D-ribose are described in the specific part pages.
+of ligand and DNA binding domains.
+    <br/>
+    Here, the parts are separated by their operator, and the different variations sensing IPTG, fructose and D-ribose are described in the specific part pages.
 For this reason, dynamic range values are represented a span of values between the described combinations. Exact ON and OFF expression values were not openly and easily accessible.
-</p>
-</div>
-<div id="chart_container" style="width:700px; margin-left: auto; margin-right: auto;">
-    <canvas id="bar_chart"></canvas>
-</div>
-<div id="parts-table" style="width:1300px; margin: 20px auto; font-family: 'Questrial', sans-serif;"></div>
-</div>
+   </p>
+  </div>
+  <div id="chart_container" style="width:700px; margin-left: auto; margin-right: auto;">
+   <canvas id="bar_chart">
+   </canvas>
+  </div>
+  <div id="parts-table" style="width:1300px; margin: 20px auto; font-family: 'Questrial', sans-serif;">
+  </div>
+ </body>
+</html>
 <script src="../scripts/bar_chart.js" type="text/javascript">
 </script>
 <script src="../scripts/Table.js" type="text/javascript">
 </script>
-</body>
-</html>

@@ -1,204 +1,296 @@
 <!DOCTYPE html>
-
 <html>
-<head>
-<meta charset="utf-8"/>
-<title>
+ <head>
+  <meta charset="utf-8"/>
+  <title>
    Part Page
   </title>
-<link href="../styles/styling.css" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css?family=Lato|Questrial" rel="stylesheet"/>
-<script>
+  <link href="../styles/styling.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css?family=Lato|Questrial" rel="stylesheet"/>
+  <script>
    function hideBar(){document.getElementById("sbar_shown").style.display="none";document.getElementById("sbar_hidden").style.display="block"}
    function showBar(){document.getElementById("sbar_shown").style.display="block";document.getElementById("sbar_hidden").style.display="none"}
   </script>
-</head>
-<nav>
-<ul>
-<li style="width:5%">
-<a href="../browsing/Home.html" style="padding: 3px 0px;">
-<img src="../images/logo.png" style="height: 75px; vertical-align: middle; margin: 0 30px;"/>
-</a>
-</li>
-<li>
-<a href="../browsing/Home.html">
+  <link href="../images/logo_square.png" rel="icon"/>
+ </head>
+ <nav>
+  <ul>
+   <li style="width:5%">
+    <a href="../browsing/Home.html" style="padding: 3px 0px;">
+     <img src="../images/logo.png" style="height: 75px; vertical-align: middle; margin: 0 30px;"/>
+    </a>
+   </li>
+   <li>
+    <a href="../browsing/Home.html">
      Home
     </a>
-</li>
-<li class="dropdown">
-<a href="../browsing/Catalogue.html">
+   </li>
+   <li class="dropdown">
+    <a href="../browsing/Catalogue.html">
      Browse
     </a>
-<div class="dropdown-content">
-<a href="../browsing/BrowsebyType.html">
+    <div class="dropdown-content">
+     <a href="../browsing/BrowsebyType.html">
       By Type
      </a>
-<a href="../browsing/BrowsebyFunction.html">
+     <a href="../browsing/BrowsebyFunction.html">
       By Function
      </a>
-<a href="../browsing/BrowsebyPublication.html">
+     <a href="../browsing/BrowsebyPublication.html">
       By Publication
      </a>
-</div>
-</li>
-<li>
-<a href="#help">
+    </div>
+   </li>
+   <li>
+    <a href="#help">
      Help File
     </a>
-</li>
-<li style="float: right">
-<a href="../browsing/search.html">
+   </li>
+   <li style="float: right">
+    <a href="../browsing/search.html">
      Search
     </a>
-</li>
-</ul>
-</nav>
-<body>
-<div class="side_bar" id="sbar_hidden" style="display: none;">
-<button onclick="showBar()" style="border:none; border-radius: 5px; cursor: pointer;" type="button">+</button>
-</div>
-<div class="side_bar" id="sbar_shown" style="display: block;">
-<button onclick="hideBar()" style="border:none; border-radius: 5px; cursor: pointer;" type="button">-</button>
-<ul>
-<li>
-<a href="#data">
+   </li>
+  </ul>
+ </nav>
+ <body>
+  <div class="side_bar" id="sbar_hidden" style="display: none;">
+   <button onclick="showBar()" style="border:none; border-radius: 5px; cursor: pointer;" type="button">
+    +
+   </button>
+  </div>
+  <div class="side_bar" id="sbar_shown" style="display: block;">
+   <button onclick="hideBar()" style="border:none; border-radius: 5px; cursor: pointer;" type="button">
+    -
+   </button>
+   <ul>
+    <li>
+     <a href="#data">
       Data
      </a>
-</li>
-<li>
-<a href="#description">
+    </li>
+    <li>
+     <a href="#description">
       Description
      </a>
-</li>
-<li>
-<a href="#sequence">
+    </li>
+    <li>
+     <a href="#sequence">
       Sequences
      </a>
-</li>
-<li>
-<a href="#referencing">
+    </li>
+    <li>
+     <a href="#referencing">
       Reference
      </a>
-</li>
-<li>
-<a href="#extra">
+    </li>
+    <li>
+     <a href="#extra">
       Extra References and External Links
      </a>
-</li>
-</ul>
-</div>
-<div class="page-content">
-<div class="full_column">
-<img id="icon" src="../images/Regulated Promoters.png" title="ICON"/>
-<h2 id="name" style="margin-bottom: 0;">Multi-Input Repressible Promoter - Core Operator</h2>
-<h4 id="code" style="margin-top: 0;">Ptrc-cOttg</h4>
-</div>
-<div class="full_column">
-<p>This part belongs to:</p>
-<p style="display:inline">Type: </p>
-<a href="../tables/type_Regulated_Promoters.html" id="type">Regulated Promoters</a>
-<br/>
-<p style="display:inline">Function: </p>
-<a href="../tables/func_Input.html" id="function">Input</a>
-<br/>
-<p style="display:inline">Publication: </p>
-<a href="../tables/pub_Groseclose,T2020.html" id="publication">Groseclose,T2020</a>
-</div>
-<div class="full_column" style="height: max-content;">
-<div class="third_column_2" id="data">
-<h3>
+    </li>
+   </ul>
+  </div>
+  <div class="page-content">
+   <div class="full_column">
+    <img id="icon" src="../images/Regulated Promoters.png" title="ICON"/>
+    <h2 id="name" style="margin-bottom: 0;">
+     Multi-Input Repressible Promoter - Core Operator
+    </h2>
+    <h4 id="code" style="margin-top: 0;">
+     Ptrc-cOttg
+    </h4>
+   </div>
+   <div class="full_column">
+    <p>
+     This part belongs to:
+    </p>
+    <p style="display:inline">
+     Type:
+    </p>
+    <a href="../tables/type_Regulated_Promoters.html" id="type">
+     Regulated Promoters
+    </a>
+    <br/>
+    <p style="display:inline">
+     Function:
+    </p>
+    <a href="../tables/func_Input.html" id="function">
+     Input
+    </a>
+    <br/>
+    <p style="display:inline">
+     Publication:
+    </p>
+    <a href="../tables/pub_Groseclose,T2020.html" id="publication">
+     Groseclose,T2020
+    </a>
+   </div>
+   <div class="full_column" style="height: max-content;">
+    <div class="third_column_2" id="data">
+     <h3>
       Data
      </h3>
-<table>
-<tr>
-<th>
+     <table>
+      <tr>
+       <th>
         Parameter
        </th>
-<th>
+       <th>
         Value
        </th>
-<th>
+       <th>
         Unit
        </th>
-</tr>
-<tr id="dr">
-<td>
+      </tr>
+      <tr id="dr">
+       <td>
         DR
        </td>
-<td>1.9~16.5</td>
-<td>
+       <td>
+        1.9~16.5
+       </td>
+       <td>
         -
        </td>
-</tr>
-
-
-
-
-</table>
-<table>
-<tr id="strain">
-<th>
+      </tr>
+     </table>
+     <table>
+      <tr id="strain">
+       <th>
         Strain
        </th>
-<td>3.32</td>
-</tr>
-<tr id="plasmid">
-<th>
+       <td>
+        3.32
+       </td>
+      </tr>
+      <tr id="plasmid">
+       <th>
         Plasmid
        </th>
-<td>Unnamed</td>
-</tr>
-<tr id="origin">
-<th>
+       <td>
+        Unnamed
+       </td>
+      </tr>
+      <tr id="origin">
+       <th>
         ori
        </th>
-<td>pSC101</td>
-</tr>
-<tr id="resistance">
-<th>
+       <td>
+        pSC101
+       </td>
+      </tr>
+      <tr id="resistance">
+       <th>
         Resistance
        </th>
-<td>Kan</td>
-</tr>
-</table>
-</div>
-<div class="third_column" id="circuit">
-<h3>
+       <td>
+        Kan
+       </td>
+      </tr>
+     </table>
+    </div>
+    <div class="third_column" id="circuit">
+     <h3>
       Circuit Context
      </h3>
-<img src="../images/part_Ptrc-cOttg.png" style="max-width:100%"/>
-<a href="../images/part_Ptrc-cOttg.png" target="_blank">
-<p>
+     <img src="../images/part_Ptrc-cOttg.png" style="max-width:100%"/>
+     <a href="../images/part_Ptrc-cOttg.png" target="_blank">
+      <p>
        (better resolution)
       </p>
-</a>
-</div>
-</div>
-<div class="full_column" id="description">
-<h3>
+     </a>
+    </div>
+   </div>
+   <div class="full_column" id="description">
+    <h3>
      Description
     </h3>
-<img src="../images/Grosenclose,T2020_cOttg.png" style="width: 100%;"/>
-</div>
-<div class="full_column" id="sequence">
-<h3>
+    <img src="../images/Grosenclose,T2020_cOttg.png" style="width: 100%;"/>
+   </div>
+   <div class="full_column" id="sequence">
+    <h3>
      Sequences
     </h3>
-<h4>Promoter</h4><p></p><h4>LacI A(10) Core</h4><p>cagtcgttgctgattggcgttgccacctccagtctggccctgcacgcgccgtcgcaaattgtcgcggcgattccttctcgcgccgatcaactgggtgccagcgtggtggtgtcgatggtagaacgaagcggcgtcgaagcctgtaaaacggcggtgcacaatcttctcgcgcaacgcgtcagtgggctgatcattaactatccgctggatgaccaggatgccattgctgtggaagctgcctgcactaatgttccggcgttatttcttgatgtctctgaccagacacccatcaacagtattattttctcccatgaagacggtacgcgactgggcgtggagcatctggtcgcattgggtcaccagcaaatcgcgctgttagcgggcccattaagttctgtctcggcgcgtctgcgtctggctggctggcataaatatctcactcgcaatcaaattcagccgatagcggaacgggaaggcgactggagtgccatgtccggttttcaacaaaccatgcaaatgctgaatgagggcatcgttcccactgcgatgctggttgccaacgatcagatggcgctgggcgcaatgcgcgccattaccgagtccgggctgcgcgttggtgcggatatctcggtagtgggatacgacgataccgaagacagctcatgttatatcccgccgttaaccaccatcaaacaggattttcgcctgctggggcaaaccagcgtggaccgcttgctgcaactctctcagggccaggcggtgaagggcaatcagctgttgcccgtctcactggtgaaaagaaaaaccaccctggcgcccaatacgcaaaccgcctctccccgcgcgttggccgattcattaatgcagctggcacgacaggtttcccgactggaaagcgggcagtga</p><h4>LacI A(11) Core</h4><p>cagtcgttgctgattggcgttgccacctccagtctggccctgcacgcgccgtcgcaaattgtcgcggcgattaaatctcgcgccgatcaactgggtgccagcgtggtgcggtcgatggtagaacgaagcggcgtcgaagcctgtaaaacggcggtgcacaatcttctcgcgcaacgcgtcagtgggctgatcattaactatccgctggatgaccaggatgccattgctgtggaagctgcctgcactaatgttccggcgttatttcttgatgtctctgaccagacacccatcaacagtattattttctcccatgaagacggtacgcgactgggcgtggagcatctggtcgcattgggtcaccagcaaatcgcgctgttagcgggcccattaagttctgtctcggcgcgtctgcgtctggctggctggcataaatatctcactcgcaatcaaattcagccgatagcggaacgggaaggcgactggagtgccatgtccggttttcaacaaaccatgcaaatgctgaatgagggcatcgttcccactgcgatgctggttgccaacgatcagatggcgctgggcgcaatgcgcgccattaccgagtccgggctgcgcgttggtgcggatatctcggtagtgggatacgacgataccgaagacagctcatgttatatcccgccgttaaccaccatcaaacaggattttcgcctgctggggcaaaccagcgtggaccgcttgctgcaactctctcagggccaggcggtgaagggcaatcagctgttgcccgtctcactggtgaaaagaaaaaccaccctggcgcccaatacgcaaaccgcctctccccgcgcgttggccgattcattaatgcagctggcacgacaggtttcccgactggaaagcgggcagtga</p><h4>FruR A(1) Core</h4><p>agttcgcgttctattggccttgtgatccccgatctggagaacaccagctattcccgcttcgctaactatctcgaacgccaggcgcggcaacggggttatcaactgaaaattgcctgctcagaagatcagccagacaacgaaatgcggtgcattgagcaccttttacagcgtcaggttgatgccattattgtttcgacgtcgttgcctcctgagcatcctttttatcaacgctgggctaacgacccgttcccgattgtcgcgctggaccgcgccctcgatcgtgaacacttcaccagcgtggttggtgccgatcaggatgatgccgaaatgctggcggaagagttacgtaagtttcccgccgagacggtgctttatcttggtgcgctaccggagctttctgtcagcttcctgcgtgaacaaggtttccgtactgcctggaaagatgatccgcgcgaagtgcatttcctgtatgccaacagctatgagcgggaggcggctgcccagttattcgaaaaatggctggaaacgcatccgatgccgcaggcgctgttcacaacgtcgtttgcgttgttgcaaggagtgatggatgtcacgctgcgtcgcgacggcaaactgccttctgacctggcaattgccacctttggccagaacgaactgctcgacttcttacagtgtccggtgctggcagtggctcaacgtcaccgcgatgtcgcagagcgtgtgctggagattgtcctggcaagcctggacgaaccgcgtaagccaaaacctggtttaacgcgcattaaacgtaatctctatcgccgcggcgtgctcagccgtagctaa</p><h4>FruR A(2) Core</h4><p>agttcgcgttctattggccttgtgatccccgatctggagaacaccagctattcccgcttcgctaactatctcgaacgccaggcgcggcaacggggttatcaactgattattgcctgctcagaagatcagccagacatcgaaatgcggtgcattgagcacctttttcagcgtcaggttgatgccaatattgtttcgacgtcgttgcctcctgagcatcctttttatcaacgctgggctaacgacccgttcccgattgtcgcgctggaccgcgccctcgatcgtgtacacttcaccagcgtggttggtgccgatcaggatgatgccgaaatgctggcggaagagttacgtaagtttcccgccgagacggtgctttatcttggtgcgctaccggagctttctgtcagcttcctgcgtgaacaaggtttccgtactgcctggaaagatgatccgcgcgaagtgcatttcctgtatgccaacagctatgagcgggaggcggctgcccagttattcgaaaaatggctggaaacgcatccgatgccgcaggcgctgttcacaacgtcgtttgcgttgttgcaaggagtgatggatgtcacgctgcgtcgcgacggcaatcagccttcagacctggcaattgccacctttggcgataacgaactgctcgacttcttacagtgtccggtgctggcagtggctcaacgtcatcgcgttgtcgcagagcgtgtgctggagattgtcctggcaagcctggacgaaccgcgtaagccaaaacctggcttaacgcgcattaaacgtattctctatcgtcgcggcgtgctcagccgtagctaa</p><h4>RbsR A(1) Core</h4><p>gcgtcgcataccattggcatgttgatcactgccagtaccaatcctttctattcagaactggtgcgtggcgttgaacgcagctgcttcgaacgcggttatagtctcgatctttgcaataccgaaggcgatgaacagcggatgaatcgcaatctggaaacgctgatgcaaaaacgcgttgatggcttgctgttactgtgcaccgaaacgcatcaaccttcgcgtgaaatcatgcaacgttatccgacagtgcctactgtgatgatggactgggctccgttcgatggcgacagcgatcttattcaggataactcgttgctgggcggagacttagcaacgcaatatctgatcgataaaggtcatacccgtatcgcctgtattaccggcccgctggataaaactccggcgcgcctgcggttggaaggttatcgggcggcgatgaaacgtgcgggtctcaacattcctgatggctatgaagtcactggtgattttgaatttaacggcgggtttgacgctatgcgccaactgctatcacatccgctgcgtcctcaggccgtctttaccggaaatgacgctatggctgttggcgtttaccaggcgttatatcaggcagagttacaggttccgcaggatatcgcggtgattggctatgacgatatcgaactggcaagctttatgacgccaccattaaccactatccaccaaccgaaagatgaactgggggagctggcgattgatgtactcatccatcggataacccagccgacccttcagcaacaacgattacaacttactccgattctgatggaacgcggttcggcttag</p><h4>RbsR A(2) Core</h4><p>gcgtcgcataccattggcatgttgatcactgccagtaccaatcctttctattcagaactggtgcgtggcgttgaacgcagctgcttcgaacgcggttatagtctcgtcccttgcaataccgaaggcgatgaacagcggatgaatcgcaatctggaaacgctgatgcaaaaacgcgttgatggcttgctgttactgtgcaccgaaacgcatcaaccttcgcgtgaaatcatgcaacgttatccgacagtgcctactgtgatgatggactgggctccgttcgatggcgacagcgatcttattcaggataactcgttgctgggcggagacttagcaacgcaatatctgatcgataaaggtcatacccgtatcgcctgtattaccggcccgctggataaaactccggcgcgcctgcggttggaaggttatcgggcggcgatgaaacgtgcgggtctcaacattcctgatggctatgaagtcactggtgattttgaatttaacggcgggtttgacgctatgcgccaactgctatcacatccgctgcgtcctcaggccgtctttaccggaaatgacgctatggctgttggcgtttaccaggcgttatatcaggcagagttacaggttccgcaggatatcgcggtgattggctatgacgatatcgaactggcaagctttatgacgccaccattaaccactatccaccaaccgaaagatgaactgggggagctggcgattgatgtactcatccatcggataacccagccgacccttcagcaacaacgattacaacttactccgattctgatggaacgcggttcggcttag</p><h4>RbsR A(3) Core</h4><p>gcgtcgcataccattggcatgttgatcactgccagtaccaatcctttctattcagaactggtgcgtggcgttcctcgcagctgcttcgaacgcggttatagtctcgtcctttgcaataccgaaggcgatgaacagcggatgaatcgcaatctggaaacgctgatgcaaaaacgcgttgatggcttgctgttactgtgcaccgaaacgcatcaaccttcgcgtgaaatcatgcaacgttatccgacagtgcctactgtgatgatggactgggctccgttcgatggcgacagcgatcttattcaggataactcgttgctgggcggagacttagcaacgcaatatctgatcgataaaggtcatacccgtatcgcctgtattaccggcccgctggataaaactccggcgcgcctgcggttggaaggttatcgggcggcgatgaaacgtgcgggtctcaacattcctgatggctatgaagtcactggtgattttgaatttaacggcgggtttgacgctatgcgccaactgctatcacatccgctgcgtcctcaggccgtctttaccggaaatgacgctatggctgttggcgtttaccaggcgttatatcaggcagagttacaggttccgcaggatatcgcggtgattggctatgacgatatcgaactggcaagctttatgacgccaccattaaccactatccaccaaccgaaagatgaactgggggagctggcgattgatgtactcatccatcggataacccagccgacccttcagcaacaacgattacaacttactccgattctgatggaacgcggttcggcttag</p><h4>RbsR A(4) Core</h4><p>gcgtcgcataccattggcatgttgatcactgccagtaccaatcctttctattcagaactggtgcgtggcgttgaacgcagctgccctgaacgcggttatagtctcgtcctttgcaataccgaaggcgatgaacagcggatgaatcgcaatctggaaacgctgatgcaaaaacgcgttgatggcttgctgttactgtgcaccgaaacgcatcaaccttcgcgtgaaatcatgcaacgttatccgacagtgcctactgtgatgatggactgggctccgttcgatggcgacagcgatcttattcaggataactcgttgctgggcggagacttagcaacgcaatatctgatcgataaaggtcatacccgtatcgcctgtattaccggcccgctggataaaactccggcgcgcctgcggttggaaggttatcgggcggcgatgaaacgtgcgggtctcaacattcctgatggctatgaagtcactggtgattttgaatttaacggcgggtttgacgctatgcgccaactgctatcacatccgctgcgtcctcaggccgtctttaccggaaatgacgctatggctgttggcgtttaccaggcgttatatcaggcagagttacaggttccgcaggatatcgcggtgattggctatgacgatatcgaactggcaagctttatgacgccaccattaaccactatccaccaaccgaaagatgaactgggggagctggcgattgatgtactcatccatcggataacccagccgacccttcagcaacaacgattacaacttactccgattctgatggaacgcggttcggcttag</p><h4>Binding Domain HQN</h4><p>gtgaaaccagtaacgttatacgatgtcgcagagtatgccggtgtctctcatcagaccgtttccaatgtggtgaaccaggccagccacgtttctgcgaaaacgcgggaaaaagtggaagcggcgatggcggagctgaattacattcccaaccgcgtggcacaacaactggcgggcaaa</p></div>
-<div class="full_column" id="referencing">
-<h3>
+    <h4>
+     Promoter
+    </h4>
+    <p>
+    </p>
+    <h4>
+     LacI A(10) Core
+    </h4>
+    <p>
+     cagtcgttgctgattggcgttgccacctccagtctggccctgcacgcgccgtcgcaaattgtcgcggcgattccttctcgcgccgatcaactgggtgccagcgtggtggtgtcgatggtagaacgaagcggcgtcgaagcctgtaaaacggcggtgcacaatcttctcgcgcaacgcgtcagtgggctgatcattaactatccgctggatgaccaggatgccattgctgtggaagctgcctgcactaatgttccggcgttatttcttgatgtctctgaccagacacccatcaacagtattattttctcccatgaagacggtacgcgactgggcgtggagcatctggtcgcattgggtcaccagcaaatcgcgctgttagcgggcccattaagttctgtctcggcgcgtctgcgtctggctggctggcataaatatctcactcgcaatcaaattcagccgatagcggaacgggaaggcgactggagtgccatgtccggttttcaacaaaccatgcaaatgctgaatgagggcatcgttcccactgcgatgctggttgccaacgatcagatggcgctgggcgcaatgcgcgccattaccgagtccgggctgcgcgttggtgcggatatctcggtagtgggatacgacgataccgaagacagctcatgttatatcccgccgttaaccaccatcaaacaggattttcgcctgctggggcaaaccagcgtggaccgcttgctgcaactctctcagggccaggcggtgaagggcaatcagctgttgcccgtctcactggtgaaaagaaaaaccaccctggcgcccaatacgcaaaccgcctctccccgcgcgttggccgattcattaatgcagctggcacgacaggtttcccgactggaaagcgggcagtga
+    </p>
+    <h4>
+     LacI A(11) Core
+    </h4>
+    <p>
+     cagtcgttgctgattggcgttgccacctccagtctggccctgcacgcgccgtcgcaaattgtcgcggcgattaaatctcgcgccgatcaactgggtgccagcgtggtgcggtcgatggtagaacgaagcggcgtcgaagcctgtaaaacggcggtgcacaatcttctcgcgcaacgcgtcagtgggctgatcattaactatccgctggatgaccaggatgccattgctgtggaagctgcctgcactaatgttccggcgttatttcttgatgtctctgaccagacacccatcaacagtattattttctcccatgaagacggtacgcgactgggcgtggagcatctggtcgcattgggtcaccagcaaatcgcgctgttagcgggcccattaagttctgtctcggcgcgtctgcgtctggctggctggcataaatatctcactcgcaatcaaattcagccgatagcggaacgggaaggcgactggagtgccatgtccggttttcaacaaaccatgcaaatgctgaatgagggcatcgttcccactgcgatgctggttgccaacgatcagatggcgctgggcgcaatgcgcgccattaccgagtccgggctgcgcgttggtgcggatatctcggtagtgggatacgacgataccgaagacagctcatgttatatcccgccgttaaccaccatcaaacaggattttcgcctgctggggcaaaccagcgtggaccgcttgctgcaactctctcagggccaggcggtgaagggcaatcagctgttgcccgtctcactggtgaaaagaaaaaccaccctggcgcccaatacgcaaaccgcctctccccgcgcgttggccgattcattaatgcagctggcacgacaggtttcccgactggaaagcgggcagtga
+    </p>
+    <h4>
+     FruR A(1) Core
+    </h4>
+    <p>
+     agttcgcgttctattggccttgtgatccccgatctggagaacaccagctattcccgcttcgctaactatctcgaacgccaggcgcggcaacggggttatcaactgaaaattgcctgctcagaagatcagccagacaacgaaatgcggtgcattgagcaccttttacagcgtcaggttgatgccattattgtttcgacgtcgttgcctcctgagcatcctttttatcaacgctgggctaacgacccgttcccgattgtcgcgctggaccgcgccctcgatcgtgaacacttcaccagcgtggttggtgccgatcaggatgatgccgaaatgctggcggaagagttacgtaagtttcccgccgagacggtgctttatcttggtgcgctaccggagctttctgtcagcttcctgcgtgaacaaggtttccgtactgcctggaaagatgatccgcgcgaagtgcatttcctgtatgccaacagctatgagcgggaggcggctgcccagttattcgaaaaatggctggaaacgcatccgatgccgcaggcgctgttcacaacgtcgtttgcgttgttgcaaggagtgatggatgtcacgctgcgtcgcgacggcaaactgccttctgacctggcaattgccacctttggccagaacgaactgctcgacttcttacagtgtccggtgctggcagtggctcaacgtcaccgcgatgtcgcagagcgtgtgctggagattgtcctggcaagcctggacgaaccgcgtaagccaaaacctggtttaacgcgcattaaacgtaatctctatcgccgcggcgtgctcagccgtagctaa
+    </p>
+    <h4>
+     FruR A(2) Core
+    </h4>
+    <p>
+     agttcgcgttctattggccttgtgatccccgatctggagaacaccagctattcccgcttcgctaactatctcgaacgccaggcgcggcaacggggttatcaactgattattgcctgctcagaagatcagccagacatcgaaatgcggtgcattgagcacctttttcagcgtcaggttgatgccaatattgtttcgacgtcgttgcctcctgagcatcctttttatcaacgctgggctaacgacccgttcccgattgtcgcgctggaccgcgccctcgatcgtgtacacttcaccagcgtggttggtgccgatcaggatgatgccgaaatgctggcggaagagttacgtaagtttcccgccgagacggtgctttatcttggtgcgctaccggagctttctgtcagcttcctgcgtgaacaaggtttccgtactgcctggaaagatgatccgcgcgaagtgcatttcctgtatgccaacagctatgagcgggaggcggctgcccagttattcgaaaaatggctggaaacgcatccgatgccgcaggcgctgttcacaacgtcgtttgcgttgttgcaaggagtgatggatgtcacgctgcgtcgcgacggcaatcagccttcagacctggcaattgccacctttggcgataacgaactgctcgacttcttacagtgtccggtgctggcagtggctcaacgtcatcgcgttgtcgcagagcgtgtgctggagattgtcctggcaagcctggacgaaccgcgtaagccaaaacctggcttaacgcgcattaaacgtattctctatcgtcgcggcgtgctcagccgtagctaa
+    </p>
+    <h4>
+     RbsR A(1) Core
+    </h4>
+    <p>
+     gcgtcgcataccattggcatgttgatcactgccagtaccaatcctttctattcagaactggtgcgtggcgttgaacgcagctgcttcgaacgcggttatagtctcgatctttgcaataccgaaggcgatgaacagcggatgaatcgcaatctggaaacgctgatgcaaaaacgcgttgatggcttgctgttactgtgcaccgaaacgcatcaaccttcgcgtgaaatcatgcaacgttatccgacagtgcctactgtgatgatggactgggctccgttcgatggcgacagcgatcttattcaggataactcgttgctgggcggagacttagcaacgcaatatctgatcgataaaggtcatacccgtatcgcctgtattaccggcccgctggataaaactccggcgcgcctgcggttggaaggttatcgggcggcgatgaaacgtgcgggtctcaacattcctgatggctatgaagtcactggtgattttgaatttaacggcgggtttgacgctatgcgccaactgctatcacatccgctgcgtcctcaggccgtctttaccggaaatgacgctatggctgttggcgtttaccaggcgttatatcaggcagagttacaggttccgcaggatatcgcggtgattggctatgacgatatcgaactggcaagctttatgacgccaccattaaccactatccaccaaccgaaagatgaactgggggagctggcgattgatgtactcatccatcggataacccagccgacccttcagcaacaacgattacaacttactccgattctgatggaacgcggttcggcttag
+    </p>
+    <h4>
+     RbsR A(2) Core
+    </h4>
+    <p>
+     gcgtcgcataccattggcatgttgatcactgccagtaccaatcctttctattcagaactggtgcgtggcgttgaacgcagctgcttcgaacgcggttatagtctcgtcccttgcaataccgaaggcgatgaacagcggatgaatcgcaatctggaaacgctgatgcaaaaacgcgttgatggcttgctgttactgtgcaccgaaacgcatcaaccttcgcgtgaaatcatgcaacgttatccgacagtgcctactgtgatgatggactgggctccgttcgatggcgacagcgatcttattcaggataactcgttgctgggcggagacttagcaacgcaatatctgatcgataaaggtcatacccgtatcgcctgtattaccggcccgctggataaaactccggcgcgcctgcggttggaaggttatcgggcggcgatgaaacgtgcgggtctcaacattcctgatggctatgaagtcactggtgattttgaatttaacggcgggtttgacgctatgcgccaactgctatcacatccgctgcgtcctcaggccgtctttaccggaaatgacgctatggctgttggcgtttaccaggcgttatatcaggcagagttacaggttccgcaggatatcgcggtgattggctatgacgatatcgaactggcaagctttatgacgccaccattaaccactatccaccaaccgaaagatgaactgggggagctggcgattgatgtactcatccatcggataacccagccgacccttcagcaacaacgattacaacttactccgattctgatggaacgcggttcggcttag
+    </p>
+    <h4>
+     RbsR A(3) Core
+    </h4>
+    <p>
+     gcgtcgcataccattggcatgttgatcactgccagtaccaatcctttctattcagaactggtgcgtggcgttcctcgcagctgcttcgaacgcggttatagtctcgtcctttgcaataccgaaggcgatgaacagcggatgaatcgcaatctggaaacgctgatgcaaaaacgcgttgatggcttgctgttactgtgcaccgaaacgcatcaaccttcgcgtgaaatcatgcaacgttatccgacagtgcctactgtgatgatggactgggctccgttcgatggcgacagcgatcttattcaggataactcgttgctgggcggagacttagcaacgcaatatctgatcgataaaggtcatacccgtatcgcctgtattaccggcccgctggataaaactccggcgcgcctgcggttggaaggttatcgggcggcgatgaaacgtgcgggtctcaacattcctgatggctatgaagtcactggtgattttgaatttaacggcgggtttgacgctatgcgccaactgctatcacatccgctgcgtcctcaggccgtctttaccggaaatgacgctatggctgttggcgtttaccaggcgttatatcaggcagagttacaggttccgcaggatatcgcggtgattggctatgacgatatcgaactggcaagctttatgacgccaccattaaccactatccaccaaccgaaagatgaactgggggagctggcgattgatgtactcatccatcggataacccagccgacccttcagcaacaacgattacaacttactccgattctgatggaacgcggttcggcttag
+    </p>
+    <h4>
+     RbsR A(4) Core
+    </h4>
+    <p>
+     gcgtcgcataccattggcatgttgatcactgccagtaccaatcctttctattcagaactggtgcgtggcgttgaacgcagctgccctgaacgcggttatagtctcgtcctttgcaataccgaaggcgatgaacagcggatgaatcgcaatctggaaacgctgatgcaaaaacgcgttgatggcttgctgttactgtgcaccgaaacgcatcaaccttcgcgtgaaatcatgcaacgttatccgacagtgcctactgtgatgatggactgggctccgttcgatggcgacagcgatcttattcaggataactcgttgctgggcggagacttagcaacgcaatatctgatcgataaaggtcatacccgtatcgcctgtattaccggcccgctggataaaactccggcgcgcctgcggttggaaggttatcgggcggcgatgaaacgtgcgggtctcaacattcctgatggctatgaagtcactggtgattttgaatttaacggcgggtttgacgctatgcgccaactgctatcacatccgctgcgtcctcaggccgtctttaccggaaatgacgctatggctgttggcgtttaccaggcgttatatcaggcagagttacaggttccgcaggatatcgcggtgattggctatgacgatatcgaactggcaagctttatgacgccaccattaaccactatccaccaaccgaaagatgaactgggggagctggcgattgatgtactcatccatcggataacccagccgacccttcagcaacaacgattacaacttactccgattctgatggaacgcggttcggcttag
+    </p>
+    <h4>
+     Binding Domain HQN
+    </h4>
+    <p>
+     gtgaaaccagtaacgttatacgatgtcgcagagtatgccggtgtctctcatcagaccgtttccaatgtggtgaaccaggccagccacgtttctgcgaaaacgcgggaaaaagtggaagcggcgatggcggagctgaattacattcccaaccgcgtggcacaacaactggcgggcaaa
+    </p>
+   </div>
+   <div class="full_column" id="referencing">
+    <h3>
      Reference
     </h3>
-<p>Groseclose, T. M., Rondon, R. E., Herde, Z. D., Aldrete, C. A. &amp; Wilson, C. J. Engineered systems of inducible anti-repressors for the next generation of biological programming. Nat. Commun. 11, 4440 (2020).</p>
-<a href="https://doi.org/10.1038/s41467-020-18302-1">https://doi.org/10.1038/s41467-020-18302-1</a></div>
-<div class="full_column" id="extra">
-<h3>
+    <p>
+     Groseclose, T. M., Rondon, R. E., Herde, Z. D., Aldrete, C. A. &amp; Wilson, C. J. Engineered systems of inducible anti-repressors for the next generation of biological programming. Nat. Commun. 11, 4440 (2020).
+    </p>
+    <a href="https://doi.org/10.1038/s41467-020-18302-1">
+     https://doi.org/10.1038/s41467-020-18302-1
+    </a>
+   </div>
+   <div class="full_column" id="extra">
+    <h3>
      Extra References and External Links
     </h3>
-<p>
+    <p>
      EXTRA READING
     </p>
-</div>
-</div>
-</body>
+   </div>
+  </div>
+ </body>
 </html>

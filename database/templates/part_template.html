@@ -7,12 +7,11 @@
   </title>
   <link href="../styles/styling.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css?family=Lato|Questrial" rel="stylesheet"/>
-
   <script>
    function hideBar(){document.getElementById("sbar_shown").style.display="none";document.getElementById("sbar_hidden").style.display="block"}
    function showBar(){document.getElementById("sbar_shown").style.display="block";document.getElementById("sbar_hidden").style.display="none"}
   </script>
-  
+  <link href="../images/logo_square.png" rel="icon"/>
  </head>
  <nav>
   <ul>
@@ -56,10 +55,14 @@
  </nav>
  <body>
   <div class="side_bar" id="sbar_hidden" style="display: none;">
-   <button type="button" style="border:none; border-radius: 5px; cursor: pointer;" onclick="showBar()">+</button>
+   <button onclick="showBar()" style="border:none; border-radius: 5px; cursor: pointer;" type="button">
+    +
+   </button>
   </div>
   <div class="side_bar" id="sbar_shown" style="display: block;">
-   <button type="button" style="border:none; border-radius: 5px; cursor: pointer;" onclick="hideBar()">-</button>
+   <button onclick="hideBar()" style="border:none; border-radius: 5px; cursor: pointer;" type="button">
+    -
+   </button>
    <ul>
     <li>
      <a href="#data">
@@ -90,25 +93,38 @@
   </div>
   <div class="page-content">
    <div class="full_column">
-    <img id="icon" src="../images/ICON.png" title="ICON">
-     <h2 id="name" style="margin-bottom: 0;">
-      PART_NAME
-     </h2>
-     <h4 id="code" style="margin-top: 0;">
-      PART_CODE
-     </h4>
-    </img>
+    <img id="icon" src="../images/ICON.png" title="ICON"/>
+    <h2 id="name" style="margin-bottom: 0;">
+     PART_NAME
+    </h2>
+    <h4 id="code" style="margin-top: 0;">
+     PART_CODE
+    </h4>
    </div>
    <div class="full_column">
-        <p>This part belongs to:</p>
-        <p style="display:inline">Type: </p>
-        <a id="type" href="#">TYPE</a>
-        <br>
-        <p style="display:inline">Function: </p>
-        <a id="function" href="#">FUNCTION</a>
-        <br>
-        <p style="display:inline">Publication: </p>
-        <a id="publication" href="#">PUBLICATION</a>
+    <p>
+     This part belongs to:
+    </p>
+    <p style="display:inline">
+     Type:
+    </p>
+    <a href="#" id="type">
+     TYPE
+    </a>
+    <br/>
+    <p style="display:inline">
+     Function:
+    </p>
+    <a href="#" id="function">
+     FUNCTION
+    </a>
+    <br/>
+    <p style="display:inline">
+     Publication:
+    </p>
+    <a href="#" id="publication">
+     PUBLICATION
+    </a>
    </div>
    <div class="full_column" style="height: max-content;">
     <div class="third_column_2" id="data">

@@ -16,6 +16,7 @@
    var specific_columns = ['DR', 'High', 'Low', 'Unit', 'Set', 'Lab', 'doi', 'Regulator', 'Reg Type']
   </script>
   <link href="../styles/styling.css" rel="stylesheet"/>
+  <link href="../images/logo_square.png" rel="icon"/>
  </head>
  <nav>
   <ul>
@@ -60,16 +61,21 @@
  <body>
   <div class="page-content">
    <div class="full-column">
-    <img id="icon" src="../images/input.png" title="Inputs Icon"/>
+    <img id="icon" src="../images/output.png" title="Inputs Icon"/>
     <h2 id="name" style="margin-bottom: 0;">
      Output
     </h2>
     <br/>
     <p>
      Endpoints of a circuit. Presently, only CRISPR systems are represented, as they are versatile tools that can regulate many targets, but would also present drawbacks if used as circuit processing.
+     <br/>
+     For information on reporters, which are the usual proof-of-concept biocircuit outputs, see the
+     <a href="../tables/func_output.html">
+      reporters page
+     </a>
+     .
     </p>
     <p>
-     
     </p>
     <p>
      <strong>
@@ -80,14 +86,15 @@
      Dynamic Range
     </label>
     <input checked="true" id="dr" name="dr" onclick="update_table()" type="checkbox"/>
-    <br/>
-    <input id="hill" name="hill" onclick="update_table()" style="display: none" type="checkbox"/>
-    <label for="max_min">
-     High/Low Expresion
-    </label>
-    <input id="max_min" name="max_min" onclick="update_table()" type="checkbox"/>
-    <br/>
-    <input id="k" name="k" onclick="update_table()" style="display: none" type="checkbox"/>
+    <br>
+     <input id="hill" name="hill" onclick="update_table()" style="display: none" type="checkbox"/>
+     <label for="max_min">
+      High/Low Expresion
+     </label>
+     <input id="max_min" name="max_min" onclick="update_table()" type="checkbox"/>
+     <br/>
+     <input id="k" name="k" onclick="update_table()" style="display: none" type="checkbox"/>
+    </br>
    </div>
   </div>
   <div id="parts-table" style="width:1300px; margin: 20px auto; font-family: 'Questrial', sans-serif;">

@@ -1,89 +1,95 @@
 <html>
-<head>
-<meta charset="utf-8"/>
-<title>
-     Publication Parts Table
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Publication Parts Table
   </title>
-<link href="https://fonts.googleapis.com/css?family=Lato|Questrial" rel="stylesheet"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-</script>
-<link href="https://unpkg.com/tabulator-tables@4.6.3/dist/css/tabulator.min.css" rel="stylesheet"/>
-<script src="https://unpkg.com/tabulator-tables@4.6.3/dist/js/tabulator.min.js" type="text/javascript">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script id="table" src="../scripts/pub_Kylilis,N2018.json" type="text/javascript">
-</script>
-<script type="text/javascript">
-     var specific_columns = ['High', 'DR', 'Low', 'Km']
+  <link href="https://fonts.googleapis.com/css?family=Lato|Questrial" rel="stylesheet"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+  </script>
+  <link href="https://unpkg.com/tabulator-tables@4.6.3/dist/css/tabulator.min.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/tabulator-tables@4.6.3/dist/js/tabulator.min.js" type="text/javascript">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js">
+  </script>
+  <script id="table" src="../scripts/pub_Kylilis,N2018.json" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   var specific_columns = ['High', 'DR', 'Low', 'Km']
      var chart_variable = 'DR'
      var y_title = 'Dynamic Range'
-</script>
-<link href="../styles/styling.css" rel="stylesheet"/>
-</head>
-<nav>
-<ul>
-<li style="width:5%">
-<a href="../browsing/Home.html" style="padding: 3px 0px;">
-<img src="../images/logo.png" style="height: 75px; vertical-align: middle; margin: 0 30px;"/>
-</a>
-</li>
-<li>
-<a href="../browsing/Home.html">
+  </script>
+  <link href="../styles/styling.css" rel="stylesheet"/>
+  <link href="../images/logo_square.png" rel="icon"/>
+ </head>
+ <nav>
+  <ul>
+   <li style="width:5%">
+    <a href="../browsing/Home.html" style="padding: 3px 0px;">
+     <img src="../images/logo.png" style="height: 75px; vertical-align: middle; margin: 0 30px;"/>
+    </a>
+   </li>
+   <li>
+    <a href="../browsing/Home.html">
      Home
     </a>
-</li>
-<li class="dropdown">
-<a href="../browsing/Catalogue.html">
+   </li>
+   <li class="dropdown">
+    <a href="../browsing/Catalogue.html">
      Browse
     </a>
-<div class="dropdown-content">
-<a href="../browsing/BrowsebyType.html">
+    <div class="dropdown-content">
+     <a href="../browsing/BrowsebyType.html">
       By Type
      </a>
-<a href="../browsing/BrowsebyFunction.html">
+     <a href="../browsing/BrowsebyFunction.html">
       By Function
      </a>
-<a href="../browsing/BrowsebyPublication.html">
+     <a href="../browsing/BrowsebyPublication.html">
       By Publication
      </a>
-</div>
-</li>
-<li>
-<a href="#help">
+    </div>
+   </li>
+   <li>
+    <a href="#help">
      Help File
     </a>
-</li>
-<li style="float: right">
-<a href="../browsing/search.html">
+   </li>
+   <li style="float: right">
+    <a href="../browsing/search.html">
      Search
     </a>
-</li>
-</ul>
-</nav>
-<body>
-<div class="page-content">
-<h2 id="pub_title">Kylilis, N., Tuza, Z. A., Stan, G. B. & Polizzi, K. M. Tools for engineering coordinated system behaviour in synthetic microbial consortia. Nat. Commun. 9, 2677 (2018).</h2>
-<p>
-<!-- Section for the manually written brief publication description. This should state what the characterized parts are and how to interpret the data in the table -->
+   </li>
+  </ul>
+ </nav>
+ <body>
+  <div class="page-content">
+   <h2 id="pub_title">
+    Kylilis, N., Tuza, Z. A., Stan, G. B. &amp; Polizzi, K. M. Tools for engineering coordinated system behaviour in synthetic microbial consortia. Nat. Commun. 9, 2677 (2018).
+   </h2>
+   <p>
+    <!-- Section for the manually written brief publication description. This should state what the characterized parts are and how to interpret the data in the table -->
     In this publication, Kylilis and coleagues characterize six quorum sensing promoters, their regulators, and cross-reactivities with each inducer.
     These are the same as other four characterized in another work in this repository, although in other conditions.
     It is also important to note that there are two other types of crosstalk (reporters/promoters and synthases/inducers)
     that need to be considered when using these parts. Orthogonality could be further improved changing the regulators expression.
-</p>
-</div>
-<div id="chart_container" style="width:700px; margin-left: auto; margin-right: auto;">
-    <canvas id="scatter_chart"></canvas>
-</div>
-<div id="chart_container" style="width:700px; margin-left: auto; margin-right: auto;">
-    <canvas id="bar_chart"></canvas>
-</div>
-<div id="parts-table" style="width:1300px; margin: 20px auto; font-family: 'Questrial', sans-serif;">
-</div>
-<script src="../scripts/scatter_chart.js" type="text/javascript">
-</script>
-<script src="../scripts/bar_chart.js" type="text/javascript">
-</script>
-<script src="../scripts/Table.js" type="text/javascript">
-</script>
-</body>
+   </p>
+  </div>
+  <div id="chart_container" style="width:700px; margin-left: auto; margin-right: auto;">
+   <canvas id="scatter_chart">
+   </canvas>
+  </div>
+  <div id="chart_container" style="width:700px; margin-left: auto; margin-right: auto;">
+   <canvas id="bar_chart">
+   </canvas>
+  </div>
+  <div id="parts-table" style="width:1300px; margin: 20px auto; font-family: 'Questrial', sans-serif;">
+  </div>
+  <script src="../scripts/scatter_chart.js" type="text/javascript">
+  </script>
+  <script src="../scripts/bar_chart.js" type="text/javascript">
+  </script>
+  <script src="../scripts/Table.js" type="text/javascript">
+  </script>
+ </body>
 </html>
