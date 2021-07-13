@@ -3,6 +3,10 @@ body {
  // background-color: mistyrose;
 }
 
+body a {
+  text-decoration: none;
+}
+
 nav{
   position: static;
   top: 0;
