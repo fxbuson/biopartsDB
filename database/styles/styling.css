@@ -1,6 +1,6 @@
 body {
   margin:0;
- // background-color: mistyrose;
+  // background-color: mistyrose;
 }
 
 body a {
@@ -21,7 +21,7 @@ nav ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: lightgrey;
+  background-color: #188eac;
   min-width: 1050px;
   width: 100%;
   height: 100%;
@@ -35,14 +35,14 @@ nav li {
 
 nav li a {
   display: block;
-  color: Black;
+  color: white;
   text-align: center;
   padding: 32px 48px;
   text-decoration: none;
   font-family: 'Questrial', sans-serif;
 }
 nav li a:hover{
-  background-color: darkgrey;
+  background-color: #157c96;
 }
 
 .dropdown:hover .dropdown-content{
@@ -52,7 +52,7 @@ nav li a:hover{
 nav li .dropdown-content{
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
+  background-color: #188eac;
   width: 15%;
   min-width: 157px;
   z-index: 1;
