@@ -1,6 +1,6 @@
 # biopartsDB
 
-HTML platform with a hand-picked selection of publications on biocircuit part libraries. Created by Felipe Xavier Buson at the [Wang Lab](http://wang.bio.ed.ac.uk/) at the University of Edinburgh. Will be active until this platform can be set up online.
+HTML platform with a hand-picked selection of publications on biocircuit part libraries. Created by Felipe Xavier Buson at the [Wang Lab](https://wanglab.net/) at the University of Edinburgh. Will be active until this platform can be set up online.
 
 Currently showed to work on:
 Firefox
