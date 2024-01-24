@@ -140,6 +140,7 @@ def create_part(part_info, description):
     temp_template.find('h2',{'id':'name'}).string=part_info["Name"]
     temp_template.find('h4',{'id':'code'}).string=part_info["Code"].replace('_s', '*')
     temp_template.find('img', {'id':'icon'})['src']="../images/"+part_info["Type"]+".png"
+    temp_template.find('a',{'id':'fasta'})['href']=part_info["Code"]+".fasta"
     
     ptype = temp_template.new_tag('a')
     ptype.string = part_info["Type"]
@@ -360,6 +361,12 @@ if not new_parts.empty: #make sure that the table is not empty (if it is, just u
     for index, line in redundant_parts.iterrows():
         
         html = '../database/parts/'+line["Code"]+'.html'
+        fasta = '../database/parts/'+line["Code"]+'.fasta'
+        fasta_contents = '\n'.join(['>'+line["Code"]+' '+seq.split(':')[0]+"\n"+seq.split(':')[1] for idx, seq in enumerate(line[22:]) if type(seq) != float])
+
+        fasta_file = open(fasta, 'w')
+        fasta_file.write(fasta_contents)
+        fasta_file.close()
         
         previous = open(html, 'r', encoding='utf-8').read()
         previous_soup = BeautifulSoup(previous, 'html.parser')
